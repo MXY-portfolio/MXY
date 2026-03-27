@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探寻千年文脉，品味津沽风情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 隐藏滚动条 */
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+        
+        /* 对于IE和Edge */
+        body {
+            -ms-overflow-style: none;
+        }
+        
+        /* 对于Firefox */
+        html {
+            scrollbar-width: none;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #e2d492;
+        }
+        
+        header {
+            background: transparent;
+            color: #e2d492;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav {
+            background: #91ab89;
+            height: 70px;
+            box-shadow: 0 1px 2px #3ea893;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            color: #e2d492;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            line-height: 70px;
+        }
+        
+        nav ul li a:hover {
+            background: #a6894b;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 200px;
+            }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e2d492;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e2d492;
+        }
+        
+        .carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: #333;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .carousel-caption h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+        
+        .carousel-control {
+            background: rgba(145, 171, 137, 0.8);
+            border: none;
+            border-radius: 4px;
+            width: 40px;
+            height: 80px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-control:hover {
+            background: #91ab89;
+            transform: scale(1.05);
+        }
+        
+        .welcome-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .welcome-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #a63f26;
+        }
+        
+        .welcome-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .modules-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .modules-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #a63f26;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .module-item {
+            background: #e2d492;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .module-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background: #91ab89;
+        }
+        
+        .module-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(166, 63, 38, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .module-item:hover::before {
+            left: 100%;
+        }
+        
+        .module-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3ea893;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover .module-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .module-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover .module-icon img {
+            transform: scale(1.1);
+        }
+        
+        .module-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover h3 {
+            font-size: 1.3rem;
+            color: #a63f26;
+        }
+        
+        .module-item p {
+            font-size: 0.9rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        
+        footer {
+            background: #90A89C;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .carousel-item img {
+                height: 300px;
+            }
+            
+            .welcome-section h2,
+            .modules-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header-section">
+        <div class="header-content" style="background: url('img/index9.png'); background-size: cover; background-position: top center; background-repeat: no-repeat; padding: 4rem 0 0 0; min-height: 400px; display: flex; flex-direction: column;">
+            <nav style="margin-top: auto;">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="wisdom.html">智慧文旅</a></li>
+                    <li><a href="museum.html">云游非遗博物馆</a></li>
+                    <li><a href="culture.html">文化展示</a></li>
+                    <li><a href="skills.html">文化技艺</a></li>
+                    <li><a href="news.html">资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="carousel" id="carousel-section">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="img/index6.jpg" alt="探寻千年文脉，品味津沽风情">
+            </div>
+            <div class="carousel-item">
+                <img src="img/index2.jpg" alt="探寻千年文脉，品味津沽风情">
+            </div>
+            <div class="carousel-item">
+                <img src="img/index3.jpg" alt="探寻千年文脉，品味津沽风情">
+            </div>
+            <div class="carousel-item">
+                <img src="img/index4.jpg" alt="探寻千年文脉，品味津沽风情">
+            </div>
+            <div class="carousel-item">
+                <img src="img/index5.jpg" alt="探寻千年文脉，品味津沽风情">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-control prev">‹</button>
+            <button class="carousel-control next">›</button>
+        </div>
+    </div>
+    
+    <!-- 非遗地图模块 -->
+    <section class="map-section" id="map-section" style="background: url('img/index8.jpg'); background-size: cover; background-position: center; padding: 2rem 2rem; margin: 1rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div class="container">
+            <h2 style="text-align: center; margin: 0 0 1.5rem 0; color: #a63f26;">非遗项目分布图</h2>
+            <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                <div style="flex: 6; min-width: 0;">
+                    <img src="img/index1.jpg" alt="京津冀非遗项目分布图" style="width: 100%; height: 380px; border-radius: 10px; border: 3px solid #91ab89; opacity: 0.9;">
+                </div>
+                <div class="data-panel" style="flex: 4; background: #91ab89; padding: 1rem; border-radius: 10px; min-width: 280px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3 style="color: #e2d492; margin-bottom: 0.8rem;">非遗项目数据</h3>
+                    <div class="data-items" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <div class="data-item" data-province="北京市" style="padding: 0.4rem 0.8rem; background: #a63f26; color: #e2d492; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">北京市</div>
+                        <div class="data-item" data-province="天津市" style="padding: 0.4rem 0.8rem; background: #a63f26; color: #e2d492; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">天津市</div>
+                        <div class="data-item" data-province="河北省" style="padding: 0.4rem 0.8rem; background: #a63f26; color: #e2d492; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">河北省</div>
+                    </div>
+                    <div id="province-data" style="margin-top: 1rem; padding: 0.8rem; background: rgba(166, 137, 75, 0.8); color: #e2d492; border-radius: 5px; max-height: 250px; overflow-y: auto; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
+                        <p>点击省份查看详细数据</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 1rem; text-align: center;">
+                        <a href="wisdom.html" style="display: inline-block; width: 400px; padding: 0.8rem 1.5rem; background: #91ab89; color: #e2d492; text-decoration: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                            点击制定游览计划
+                        </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 文化模块 -->
+    <section class="culture-section" id="culture-section" style="background: url('img/index7.jpg') 30% 20%/cover no-repeat; padding: 4rem 2rem; margin: 2rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center;">
+            <h2 style="margin: 0 -1.5rem 0 0; color: #e2d492; font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); padding: 0.8rem; writing-mode: vertical-rl; text-orientation: upright; height: 250px; display: flex; align-items: center; justify-content: center;">文化</h2>
+            <div class="culture-grid" style="position: relative; flex: 1; height: 400px;">
+                <!-- 响应式设计 -->
+                <style>
+                    @media (max-width: 768px) {
+                        .culture-grid {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            grid-template-rows: auto auto auto auto;
+                            position: static;
+                            height: auto;
+                        }
+                        .culture-item {
+                            position: static !important;
+                            width: 100% !important;
+                            height: 150px !important;
+                        }
+                    }
+                    @media (max-width: 480px) {
+                        .culture-grid {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+                </style>
+                <!-- 文化小模块1 - 民间文学 -->
+                <a href="culture1.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index11.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 5%; top: 10%; width: 90px; height: 140px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块2 - 传统音乐 -->
+                <a href="culture2.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index13.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 18%; top: 50%; width: 90px; height: 160px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块3 - 传统体育 -->
+                <a href="culture6.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index16.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 0.4s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 32%; top: 15%; width: 110px; height: 150px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块4 - 传统美术 -->
+                <a href="culture7.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index15.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 0.6s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 48%; top: 40%; width: 120px; height: 160px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块5 - 曲艺 -->
+                <a href="culture5.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index19.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 0.8s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 62%; top: 10%; width: 100px; height: 170px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块6 - 传统技艺 -->
+                <a href="culture8.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index20.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 1.0s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 78%; top: 35%; width: 90px; height: 140px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块7 - 民俗 -->
+                <a href="culture10.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index18.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 1.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 13%; top: 25%; width: 80px; height: 160px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块8 - 传统舞蹈 -->
+                <a href="culture3.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index14.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 1.4s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 83%; top: 55%; width: 80px; height: 150px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块9 - 传统医药 -->
+                <a href="culture9.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index17.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 1.6s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 28%; top: 45%; width: 80px; height: 150px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+                <!-- 文化小模块10 - 传统戏剧 -->
+                <a href="culture4.html" style="text-decoration: none; color: inherit;">
+                    <div class="culture-item" style="background: url('img/index12.png'); background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 10px; transform: translateY(-50px); opacity: 0; transition: all 1.2s ease 1.8s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: absolute; left: 58%; top: 60%; width: 110px; height: 190px; cursor: pointer; border: 1px solid #999;"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+   
+    
+    <!-- 资讯模块 -->
+    <section class="news-section" id="news-section" style="position: relative; margin: 2rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/index10.jpg'); background-size: cover; background-position: bottom center; opacity: 0.5; border-radius: 15px; z-index: 0;"></div>
+        <div style="position: relative; z-index: 1; padding: 2rem 2rem;">
+
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                <div style="width: 32%; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.2rem; color: #a63f26; font-weight: bold;">◆ 政策法规 ◆</h3>
+                        <a href="news.html" style="color: #a63f26; text-decoration: none; font-size: 0.9rem;">更多 →</a>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">中华人民共和国非物质文化遗产法</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">《中华人民共和国非物质文化遗产法》是为了继承和弘扬中华民族优秀传统文化，促进社会主义精神文明建设，加强非物质文化遗产保护、保存工作而制定的法律。</p>
+                        <div style="font-size: 0.8rem; margin-top: 0.8rem; color: #999;">2011年6月1日</div>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">京津冀地方法规</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">北京、天津、河北省非遗保护条例：国家法律的区域实施细则；结合三地文化特色，构建区域性整体保护制度框架。</p>
+                        <div style="font-size: 0.8rem; margin-top: 0.8rem; color: #999;">2026年3月12日</div>
+                    </div>
+                </div>
+                
+                <div style="width: 32%; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.2rem; color: #a63f26; font-weight: bold;">◆ 学术前沿 ◆</h3>
+                        <a href="news.html" style="color: #a63f26; text-decoration: none; font-size: 0.9rem;">更多 →</a>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">学术论文</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">《文旅融合视域下天津非物质文化遗产可持续发展路径创新研究》 - 安晟辰、钟蕾</p>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333; margin-top: 0.4rem;">《新质生产力赋能非遗发展的内在逻辑、现实困境与实践进路》 - 蒲娇等</p>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">学术论坛</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">第二届"京津冀优秀传统文化传承与高校美育实践路径"学术论坛</p>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333; margin-top: 0.4rem;">第五届京津冀设计学青年学者论坛</p>
+                    </div>
+                </div>
+                
+                <div style="width: 32%; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.2rem; color: #a63f26; font-weight: bold;">◆ 保护成果 ◆</h3>
+                        <a href="news.html" style="color: #a63f26; text-decoration: none; font-size: 0.9rem;">更多 →</a>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">北京大运河</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">依托时空地理信息系统，实现大运河文化遗产全景可视化展示，联动天坛神乐署中和韶乐、花丝镶嵌等9项非遗。</p>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">唐山皮影戏</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">建成全球首个皮影数字基因库，借助毫米级动作捕捉系统，采集87种传统身段，搭建起含1200万帧数据的动态数据库。</p>
+                    </div>
+                    <div style="border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid #e0e0e0; flex: 1;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.8rem; color: #a63f26;">区域协同数字化</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #333;">京津冀文化产业协同发展天津中心与河北中心携手，运用艺术微喷技术，高精度复制200余平方米的石家庄毗卢寺壁画。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+    <script>
+        // 定点滑动功能
+        const sections = ['header-section', 'carousel-section', 'map-section', 'culture-section', 'news-section'];
+        let currentSectionIndex = 0;
+        let isScrolling = false;
+        
+        // 滚动到指定模块
+        function scrollToSection(index) {
+            if (index >= 0 && index < sections.length && !isScrolling) {
+                isScrolling = true;
+                currentSectionIndex = index;
+                const section = document.getElementById(sections[index]);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+                // 锁定滚动操作，确保滑动完成后再允许新的滑动
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000); // 减少锁定时间，加快响应速度
+            }
+        }
+        
+        // 计算当前所在模块
+        function getCurrentSectionIndex() {
+            const scrollPosition = window.scrollY + 100;
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section && section.offsetTop <= scrollPosition) {
+                    return i;
+                }
+            }
+            return 0;
+        }
+        
+        // 处理滚动事件
+        let lastScrollTime = 0;
+        window.addEventListener('wheel', function(e) {
+            const currentTime = Date.now();
+            // 防止快速连续滚动
+            if (currentTime - lastScrollTime < 1000 || isScrolling) {
+                e.preventDefault(); // 阻止默认滚动行为
+                return;
+            }
+            
+            lastScrollTime = currentTime;
+            e.preventDefault(); // 阻止默认滚动行为
+            
+            const currentIndex = getCurrentSectionIndex();
+            
+            if (e.deltaY > 0) {
+                // 向下滚动
+                scrollToSection(currentIndex + 1);
+            } else {
+                // 向上滚动
+                scrollToSection(currentIndex - 1);
+            }
+        }, { passive: false });
+        
+        // 处理触摸事件（移动端）
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        window.addEventListener('touchstart', function(e) {
+            touchStartY = e.changedTouches[0].screenY;
+        }, false);
+        
+        window.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            if (isScrolling) return;
+            
+            const diff = touchStartY - touchEndY;
+            
+            // 只要有滑动动作，就触发定点滑动
+            if (Math.abs(diff) > 10) { // 降低阈值，只要有滑动就触发
+                const currentIndex = getCurrentSectionIndex();
+                
+                if (diff > 0) {
+                    // 向下滑动
+                    scrollToSection(currentIndex + 1);
+                } else {
+                    // 向上滑动
+                    scrollToSection(currentIndex - 1);
+                }
+            }
+        }
+        
+        // 文化模块动画重置
+        function resetCultureAnimation() {
+            const cultureItems = document.querySelectorAll('.culture-item');
+            cultureItems.forEach((item, index) => {
+                // 重置初始状态
+                item.style.transform = 'translateY(-50px)';
+                item.style.opacity = '0';
+                // 清除之前的过渡效果
+                item.style.transition = 'none';
+                
+                // 强制重排
+                void item.offsetWidth;
+                
+                // 重新添加过渡效果和延迟
+                const delay = 0.2 * index; // 每个元素延迟0.2秒
+                item.style.transition = `all 1.2s ease ${delay}s`;
+                
+                // 触发动画
+                setTimeout(() => {
+                    item.style.transform = 'translateY(0)';
+                    item.style.opacity = '1';
+                }, 50);
+            });
+        }
+        
+        // 监听滚动，当进入文化模块时重置动画
+        window.addEventListener('scroll', function() {
+            const cultureSection = document.getElementById('culture-section');
+            if (!cultureSection) return;
+            
+            const rect = cultureSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight * 0.7 && rect.bottom > 0;
+            
+            if (isVisible) {
+                // 当文化模块进入视口时，重置动画
+                resetCultureAnimation();
+            }
+        });
+        
+        // 初始加载时触发一次动画
+        window.addEventListener('load', resetCultureAnimation);
+    </script>
+    
+    <footer>
+        <p>&copy; 2026 探寻千年文脉，品味津沽风情</p>
+    </footer>
+    
+    <script>
+        // 数据面板交互 
+        document.querySelectorAll('.data-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const province = this.getAttribute('data-province');
+            showProvinceData(province);
+          });
+        });
+        
+        // 默认显示北京的非遗项目数据
+        window.onload = function() {
+          showProvinceData('北京市');
+        };
+
+        // 显示省份详细数据 
+        function showProvinceData(province) { 
+          const provinceData = {
+            '北京市': {
+              title: '北京市非遗项目详情', 
+              items: [ 
+                  { type: '传统戏剧', desc: '代表性项目：京剧、昆曲、河北梆子' }, 
+                  { type: '传统音乐', desc: '代表性项目：智化寺京音乐、天坛神乐署中和韶乐' }, 
+                  { type: '传统技艺', desc: '代表性项目：景泰蓝制作技艺、北京雕漆技艺、北京宫灯制作技艺' } 
+              ] 
+            },
+            '天津市': {
+              title: '天津市非遗项目详情', 
+              items: [ 
+                  { type: '传统戏剧', desc: '代表性项目：西路评剧、河北梆子' }, 
+                  { type: '民间文学', desc: '代表性项目：杨柳青民间故事、天后宫传说' }, 
+                  { type: '传统技艺', desc: '代表性项目：泥人张彩塑、风筝魏、杨柳青年画' } 
+              ] 
+            },
+            '河北省': {
+              title: '河北省非遗项目详情', 
+              items: [ 
+                  { type: '民间文学', desc: '代表性项目：孟姜女传说、赵州桥传说、牛郎织女传说' }, 
+                  { type: '传统音乐', desc: '代表性项目：河北鼓吹乐、屈家营音乐会笙管乐' }, 
+                  { type: '传统戏剧', desc: '代表性项目：河北梆子、丝弦戏' } 
+              ] 
+            }
+          };
+
+          const data = provinceData[province];
+          if (data) { 
+            const dataContent = document.getElementById('province-data'); 
+            let html = `<h3>${data.title}</h3>`; 
+            data.items.forEach(item => { 
+                html += ` 
+                    <div class="dynamic-item"> 
+                        <strong>${item.type}</strong> 
+                        <p>说明：${item.desc}</p> 
+                    </div> 
+                `; 
+            }); 
+            dataContent.innerHTML = html; 
+          } else { 
+            dataContent.innerHTML = '<div class="default-tip">暂未收录该省份数据</div>'; 
+          } 
+        }
+        
+        // 图片切换功能（极简写法，确保生效） 
+        document.querySelectorAll('.person-item').forEach(item => { 
+          item.onmouseover = function() { 
+            document.getElementById('personImg').src = this.dataset.img; 
+          } 
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            
+            let currentIndex = 0;
+            const itemCount = carouselItems.length;
+            
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            });
+            
+            // 自动轮播
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            }, 5000);
+            
+            // 文化模块滚动动画
+            const cultureSection = document.querySelector('.culture-section');
+            const cultureItems = document.querySelectorAll('.culture-item');
+            
+            function checkScroll() {
+                const sectionTop = cultureSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.8) {
+                    cultureItems.forEach(item => {
+                        item.style.transform = 'translateY(0)';
+                        item.style.opacity = '1';
+                    });
+                    // 移除滚动监听，避免重复触发
+                    window.removeEventListener('scroll', checkScroll);
+                }
+            }
+            
+            // 添加滚动监听
+            window.addEventListener('scroll', checkScroll);
+            // 初始检查
+            checkScroll();
+        });
+    </script>
+</body>
+</html>

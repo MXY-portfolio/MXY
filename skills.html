@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文化技艺 - 探寻千年文脉，品味津沽风情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #e2d492;
+        }
+        
+        p {
+            text-indent: 2em;
+        }
+        
+        header {
+            background: transparent;
+            color: #e2d492;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav {
+            background: #91ab89;
+            height: 70px;
+            box-shadow: 0 1px 2px #3ea893;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            color: #e2d492;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            line-height: 70px;
+        }
+        
+        nav ul li a:hover {
+            background: #a6894b;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 200px;
+            }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e2d492;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e2d492;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #A7522F;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #A7522F;
+        }
+        
+        .master-class {
+            background: #F8F0DD;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        
+        .master-class-header {
+            background: #90A89C;
+            color: #333;
+            padding: 1.5rem;
+        }
+        
+        .master-class-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .master-class-content {
+            padding: 2rem;
+        }
+        
+        .skill-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            background: #F8F0DD;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .skill-container.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .master-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .master-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .skill-video {
+            flex: 0.4;
+            background: #90A89C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #333;
+            min-height: 550px;
+        }
+        
+        .skill-content {
+            flex: 0.6;
+            padding: 1.5rem;
+        }
+        
+        .skill-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #A7522F;
+        }
+        
+        .skill-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-steps {
+            margin-top: 1.5rem;
+        }
+        
+        .skill-steps h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #3ea892;
+        }
+        
+        .skill-steps ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #666;
+        }
+        
+        .skill-steps li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-intro {
+            margin-top: 1.5rem;
+        }
+        
+        .video-intro h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #3ea892;
+        }
+        
+        .video-intro p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .master-profile {
+            margin-bottom: 3rem;
+        }
+        
+        .master-profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .master-profile-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #A7522F;
+        }
+        
+        .master-profile-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .master-section {
+            margin-bottom: 4rem;
+        }
+        
+        .master-submodule {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .master-submodule.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .master-submodule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .submodule-1 {
+            background: rgba(248, 240, 221, 0.6);
+            background-image: url('../test/img/skill1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .submodule-2 {
+            background: rgba(248, 240, 221, 0.8);
+            background-image: url('../test/img/skill3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .submodule-content {
+            display: flex;
+            align-items: center;
+            padding: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .submodule-info {
+            flex: 1;
+            padding-right: 3rem;
+        }
+        
+        .submodule-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .submodule-image img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .submodule-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #A7522F;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .submodule-subtitle {
+            font-size: 1.3rem;
+            color: #3ea892;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #3ea892, #91ab89);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .submodule-description {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .submodule-description p {
+            margin-bottom: 1rem;
+        }
+        
+        .heritage-category {
+            background: #F8F0DD;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .heritage-category.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .heritage-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #A7522F;
+            border-bottom: 2px solid #3ea892;
+            padding-bottom: 0.5rem;
+        }
+        
+        .heritage-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid #3ea892;
+        }
+        
+        .heritage-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #3ea892;
+        }
+        
+        .heritage-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: #90A89C;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .master-class-header h2,
+            .master-profile-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" style="background: url('img/index9.png'); background-size: cover; background-position: top center; background-repeat: no-repeat; padding: 4rem 0 0 0; min-height: 450px; display: flex; flex-direction: column; width: 100%; max-width: none;">
+            <nav style="margin-top: auto;">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="wisdom.html">智慧文旅</a></li>
+                    <li><a href="museum.html">云游非遗博物馆</a></li>
+                    <li><a href="culture.html">文化展示</a></li>
+                    <li><a href="skills.html">文化技艺</a></li>
+                    <li><a href="news.html">资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        
+        <div class="master-class">
+            <div class="master-class-header">
+                <h2>非遗大师课</h2>
+            </div>
+            <div class="master-class-content">
+                <h3 class="section-subtitle"></h3>
+                <!-- 杨柳青年画制作技艺 -->
+                <div class="skill-container">
+                    <div class="skill-video">
+                        <video controls width="450px" height="600px">
+                            <source src="../test/img/杨柳青木版年画教学视频.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                    <div class="skill-content">
+                        <h3>杨柳青年画制作技艺</h3>
+                        <p>由杨柳青年画国家级传承人霍庆有录制，详细讲解年画的勾、刻、印、绘、裱五大制作步骤，让您在家也能学习传统工艺。</p>
+                        <div class="video-intro">
+                            <h4>视频内容简介</h4>
+                            <p>杨柳青木版年画是天津杨柳青的传统民俗美术，位列中国“四大年画”之一，核心工艺为“半印半画”。先由匠人雕刻木质画版，通过多版套印呈现画面轮廓，再以矿物颜料手工填色，从线稿到上色均追求细腻质感。题材多为门神、胖娃娃、戏曲故事，色彩明快饱和，人物形象圆润饱满，既承载着民间祈福的美好愿望，又展现了北方民俗文化的浓郁风情，至今仍保留传统作坊式生产模式。</p>
+                        </div>
+                        <div class="skill-steps">
+                            <h4>制作步骤</h4>
+                            <ul>
+                                <li><strong>勾</strong>：用墨线勾勒出年画的轮廓和细节</li>
+                                <li><strong>刻</strong>：将墨线稿刻在木板上，制成木版</li>
+                                <li><strong>印</strong>：用刻好的木版印制出年画的轮廓</li>
+                                <li><strong>绘</strong>：在印好的轮廓上手工填色，增加细节和色彩</li>
+                                <li><strong>裱</strong>：将制作好的年画进行装裱，使其更加美观和耐用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 泥人张彩塑技艺 -->
+                <div class="skill-container">
+                    <div class="skill-video">
+                        <video controls width="450px" height="600px">
+                            <source src="../test/img/泥人张教学视频.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                    <div class="skill-content">
+                        <h3>泥人张彩塑技艺</h3>
+                        <p>由泥人张彩塑国家级传承人张乃英录制，展示泥人张的塑形绘色技艺，从材料准备到最终完成的全过程。</p>
+                        <div class="video-intro">
+                            <h4>视频内容简介</h4>
+                            <p>天津泥人张泥塑是天津的传统雕塑技艺，以“形神兼备、瞬塑成型”闻名。选用天津本地黏性极强的“胶泥”为原料，经揉泥、醒泥增强韧性后，匠人凭借指尖技巧，通过捏、搓、刻、压等手法，快速捕捉人物的神态与动态。作品小至几厘米的掌中小人，大至数米的场景雕塑，既能还原民间生活的烟火气，也能塑造历史人物的庄重感，是中国泥塑艺术中“写实派”的典范，被誉为“指尖上的立体肖像”。</p>
+                        </div>
+                        <div class="skill-steps">
+                            <h4>制作步骤</h4>
+                            <ul>
+                                <li><strong>选泥</strong>：选择优质的泥土，经过晾晒、捶打、摔揉等处理</li>
+                                <li><strong>塑形</strong>：根据构思，用手和工具塑造出人物或动物的基本形态</li>
+                                <li><strong>细节刻画</strong>：精细刻画面部表情、服饰纹理等细节</li>
+                                <li><strong>上色</strong>：使用颜料进行上色，增加作品的生动性</li>
+                                <li><strong>晾干</strong>：将作品放在通风处晾干，使其更加坚固</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="master-profile">
+            <div class="master-profile-header">
+                <h2>传承人风采</h2>
+            </div>
+            <div class="master-section">
+                <!-- 第一个小模块：张宇 -->
+                <div class="master-submodule submodule-1">
+                    <div class="submodule-content">
+                        <div class="submodule-info">
+                            <h3 class="submodule-title">张宇</h3>
+                            <p class="submodule-subtitle">泥人张彩塑国家级传承人</p>
+                            <div class="submodule-description">
+                                <p>国家级非物质文化遗产“泥人张”第六代传承人张宇，出生于天津“泥人张”世家，6岁摸泥，7岁被选定为传承人，童年在作坊里耳濡目染，泥土与匠心成了他生命的底色。</p>
+                                <p>18岁时，他正式接管百年家业，立下规矩：只做纯手工作品，限量创作，守护品质。他深耕技艺，让作品《孔子像》被德国总理收藏，让中国泥塑走向世界。</p>
+                                <p>面对非遗传承，他坚持“守正创新”：既守住“以形写神”的传统精髓，又让老手艺走进当代生活——办美术馆、进校园开课，培养近4000名“小传人”。</p>
+                                <p>从玩泥的孩子到扛起家业的匠人，张宇用指尖的泥土，捏出了浮世万象，也守住了中国人的文化根脉。</p>
+                            </div>
+                        </div>
+                        <div class="submodule-image">
+                            <img src="../test/img/skill2.png" alt="张宇">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二个小模块：霍庆顺 -->
+                <div class="master-submodule submodule-2">
+                    <div class="submodule-content">
+                        <div class="submodule-info">
+                            <h3 class="submodule-title">霍庆顺</h3>
+                            <p class="submodule-subtitle">杨柳青木版年画第六代传承人</p>
+                            <div class="submodule-description">
+                                <p>霍庆顺1952年生于天津杨柳青“玉成号”画庄，这是杨柳青年画仅存的百年老字号。他的从艺之路始于“偷师”：童年时蹲在长辈身边看彩绘，趁大人休息偷偷练习印刷，父亲虽心疼手艺太苦，却终被他的痴迷打动，正式传授“勾、刻、印、绘、裱”五道核心工序。</p>
+                                <p>18岁正式入行后，他坚守传统工艺近七十年：一张《天仙送子》仅脸部彩绘就需20多道工序，坚持用矿物颜料、手工套印，拒绝机器量产，让年画保留“艳而不娇、精细透亮”的精髓。他独创“拧”法开相和“画缝”防伪，作品《五子夺莲》《连年有余》被中国国家博物馆收藏，还远赴瑞士展出，让杨柳青年画走向世界。</p>
+                                <p>面对时代变迁，他秉持“守正为根、创新为魂”：既守住老工艺的根，又支持晚辈创作“钞级兔”等国潮新题材，让年画走进T恤、手机壳等日常用品。他免费收徒、走进校园开体验课，近十年培养近千名徒弟，只为让更多人爱上这门老手艺。</p>
+                                <p>从偷学技艺的少年，到七旬仍伏案创作的匠人，霍庆顺用一把刻刀、一支毛笔，续写着杨柳青年画六百年的传奇，也守住了中国人最温暖的文化记忆。</p>
+                            </div>
+                        </div>
+                        <div class="submodule-image">
+                            <img src="../test/img/skill4.png" alt="霍庆顺">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+    <footer>
+        <p>&copy; 2026 探寻千年文脉，品味津沽风情</p>
+    </footer>
+    
+    <script>
+        // 平滑出现动画效果
+        function checkScroll() {
+            const elements = document.querySelectorAll('.skill-container, .master-submodule, .heritage-category');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+        
+        // 初始检查
+        window.addEventListener('load', checkScroll);
+        // 滚动时检查
+        window.addEventListener('scroll', checkScroll);
+        
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>传统舞蹈 - 天津国家级非物质文化遗产</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5e6;
+            font-family: 'Noto Serif SC', 'Microsoft Yahei', serif;
+            color: #333;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmY3ZTUiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+Cjwvc3ZnPg==');
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 2px solid #c8102e;
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #c8102e;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.8;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            margin: 0 10px;
+            background-color: #f8f5e6;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .nav-tab:hover {
+            background-color: #c8102e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background-color: #c8102e;
+            color: #fff;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #c8102e;
+            border-left: 6px solid #c8102e;
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .content ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            list-style-type: square;
+            color: #666;
+        }
+
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background-color: #f8f5e6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .image-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 14px 36px;
+            background-color: #c8102e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background-color: #a80d27;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(200, 16, 46, 0.4);
+        }
+
+        .heritage-info {
+            background-color: #f8f5e6;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 6px solid #f39c12;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heritage-info h4 {
+            color: #c8102e;
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .heritage-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-indent: 0;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .decorative-element img {
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content h2 {
+                font-size: 26px;
+            }
+
+            .content h3 {
+                font-size: 20px;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                margin: 5px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>传统舞蹈</h1>
+            <p>天津国家级非物质文化遗产</p>
+        </div>
+
+
+
+        <div class="content">
+            <h2>核心项目：天津舞龙</h2>
+            
+            <div class="heritage-info">
+                <h4>项目信息</h4>
+                <p><strong>批次：</strong>2008年第二批</p>
+                <p><strong>编号：</strong>Ⅲ-4</p>
+                <p><strong>申报地区：</strong>天津市</p>
+                <p><strong>类别：</strong>传统舞蹈</p>
+            </div>
+
+            <h3>项目简介</h3>
+            <p>天津舞龙是天津地区传统的民间舞蹈形式，以其精湛的技艺和热烈的表演风格著称，是天津民间文化的重要组成部分。天津舞龙的历史可以追溯到明代，经过数百年的发展，已经成为天津地区重要的民俗活动。</p>
+            <p>天津舞龙不仅是一种传统舞蹈形式，也是天津地区文化认同的重要符号，体现了天津人民对美好生活的向往和对传统文化的传承。</p>
+
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="img/dance (1).jpeg" alt="天津舞龙表演">
+                    <div class="image-caption">天津舞龙表演</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/dance (2).jpeg" alt="舞龙道具制作">
+                    <div class="image-caption">舞龙道具制作</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/dance (3).png" alt="传统舞蹈传承">
+                    <div class="image-caption">传统舞蹈传承</div>
+                </div>
+            </div>
+
+            <div class="decorative-element">
+                <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 10H150" stroke="#c8102e" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="75" cy="10" r="5" fill="#c8102e"/>
+                </svg>
+            </div>
+
+            <h3>历史背景</h3>
+            <p>天津舞龙起源于明代，最初是天津民间的祭祀活动，后来逐渐发展成为一种民间舞蹈形式。在清代，天津舞龙得到了进一步的发展，成为天津地区重要的民俗活动。新中国成立后，天津舞龙得到了政府的重视和扶持，成为了国家级非物质文化遗产。</p>
+            <p>天津舞龙的发展历程，反映了天津民间文化的演变和发展，是天津历史文化的重要见证。</p>
+
+            <h3>艺术特点</h3>
+            <p>天津舞龙的艺术特点主要体现在以下几个方面：一是表演形式多样，有单龙、双龙、群龙等多种形式；二是技艺精湛，舞龙者需要具备良好的身体素质和协调能力；三是场面热烈，通过舞龙表演，营造出喜庆、祥和的氛围；四是道具制作精美，龙身通常由彩布制成，装饰有各种图案和色彩。</p>
+            <p>天津舞龙的表演技巧丰富多样，包括盘龙、滚龙、跳龙等多种动作，展现了舞龙者的精湛技艺和团队协作精神。</p>
+
+            <h3>文化意义</h3>
+            <p>天津舞龙不仅是一种传统舞蹈形式，更是中华民族龙文化的重要载体。通过舞龙表演，人们表达对美好生活的向往和对传统文化的传承。天津舞龙所体现的团结协作、积极向上的精神，对于今天的社会仍然具有重要的教育意义。</p>
+            <p>天津舞龙也是天津地区重要的文化符号，通过舞龙表演，增强了社区的凝聚力和文化认同感，促进了社会的和谐发展。</p>
+
+            <h3>传承现状</h3>
+            <p>近年来，天津市高度重视天津舞龙的保护和传承工作，通过举办培训班、组织演出、参加比赛等方式，使这一宝贵的非物质文化遗产得到了有效的保护和弘扬。同时，天津舞龙也成为了天津文化旅游的重要资源，吸引了众多游客前来欣赏和了解。</p>
+            <p>为了进一步保护和传承天津舞龙，天津市还积极推进天津舞龙进校园、进社区等活动，培养年轻一代对传统舞蹈的兴趣和热爱，为天津舞龙的传承和发展注入新的活力。</p>
+
+            <a href="culture.html" class="btn-back">返回文化展示</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 天津国家级非物质文化遗产保护中心 | 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 导航标签切换功能
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有标签的active类
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前标签的active类
+                this.classList.add('active');
+                
+                // 这里可以添加内容切换逻辑
+            });
+        });
+    </script>
+</body>
+</html>

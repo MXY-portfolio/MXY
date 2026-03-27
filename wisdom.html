@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧文旅 - 探寻千年文脉，品味津沽风情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #e2d492;
+        }
+        
+        header {
+            background: transparent;
+            color: #e2d492;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav {
+            background: #91ab89;
+            height: 70px;
+            box-shadow: 0 1px 2px #3ea893;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            color: #e2d492;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            line-height: 70px;
+        }
+        
+        nav ul li a:hover {
+            background: #a6894b;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 200px;
+            }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e2d492;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e2d492;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .search-container {
+            background: #F8F0DD;
+            padding: 8rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .search-container h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #A7522F;
+        }
+        
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 0.8rem 1rem;
+            border: 2px solid #91ab89;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .search-btn {
+            background: #3ea893;
+            color: #e2d492;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: #a6894b;
+            transform: translateY(-2px);
+        }
+        
+        .search-results {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        
+        .result-item {
+            background: #e2d492;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #A7522F;
+            text-align: center;
+        }
+        
+        .route-card {
+            background: #F8F0DD;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            position: relative;
+            display: none;
+        }
+        
+        .route-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .route-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(144, 168, 156, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .route-card:hover::before {
+            left: 100%;
+        }
+        
+        .route-header {
+            background: #90A89C;
+            color: #333;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .route-card:hover .route-header {
+            background: #A7522F;
+            color: #F8F0DD;
+        }
+        
+        .route-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .route-card:hover .route-header h2 {
+            font-size: 1.9rem;
+        }
+        
+        .route-content {
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .route-card:hover .route-content {
+            padding: 2.2rem;
+        }
+        
+        .route-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .route-image {
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            border: 2px solid #e2d492;
+        }
+        
+        .route-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .route-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .route-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .attractions {
+            margin-top: 2rem;
+        }
+        
+        .attractions h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #A7522F;
+        }
+        
+        .attraction-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #F8F0DD;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .attraction-item:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .attraction-item::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(144, 168, 156, 0.3);
+            transition: top 0.3s ease;
+        }
+        
+        .attraction-item:hover::before {
+            top: 0;
+        }
+        
+        .attraction-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #A7522F;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .attraction-item a {
+            color: #a63f26;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .attraction-item a:hover {
+            color: #3ea893;
+            text-decoration: underline;
+        }
+        
+        .attraction-item:hover h4 {
+            font-size: 1.3rem;
+            color: #90A89C;
+        }
+        
+        .attraction-item p {
+            color: #666;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .attraction-item:hover p {
+            color: #333;
+        }
+        
+        footer {
+            background: #90A89C;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .route-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" style="background: url('img/index9.png'); background-size: cover; background-position: top center; background-repeat: no-repeat; padding: 4rem 0 0 0; min-height: 450px; display: flex; flex-direction: column; width: 100%; max-width: none;">
+            <nav style="margin-top: auto;">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="wisdom.html">智慧文旅</a></li>
+                    <li><a href="museum.html">云游非遗博物馆</a></li>
+                    <li><a href="culture.html">文化展示</a></li>
+                    <li><a href="skills.html">文化技艺</a></li>
+                    <li><a href="news.html">资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <h2 class="section-title">智慧文旅 - 深度文化体验路线</h2>
+        
+        <!-- 搜索功能 -->
+        <div class="search-container">
+            <h3>搜索旅游路线</h3>
+            <input type="text" class="search-input" id="searchInput" placeholder="输入地点名称，如：天津、北京、正定...">
+            <button class="search-btn" onclick="searchRoutes()">搜索</button>
+        </div>
+        
+        <!-- 路线一：京津冀非遗主题路线——“津门故里”线 -->
+        <div class="route-card" data-routes="天津 古文化街 估衣街 泥人张美术馆">
+            <div class="route-header">
+                <h2>路线一：京津冀非遗主题路线——“津门故里”线</h2>
+                <p>深入天津核心区，体验地道津味文化和非物质文化遗产</p>
+            </div>
+            <div class="route-content">
+                <div class="route-images">
+                    <div class="route-image">
+                        <img src="../test/img/wisdom1.jpg" alt="天津古文化街">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom2.jpg" alt="估衣街">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom3.jpg" alt="泥人张美术馆">
+                    </div>
+                </div>
+                <div class="route-description">
+                    <p>这条路线将带您深入天津的核心区，体验最地道的津味文化和非物质文化遗产。</p>
+                </div>
+                <div class="attractions">
+                    <h3>推荐景点</h3>
+                    <div class="attraction-item">
+                        <h4>1. 古文化街 (Tianjin Ancient Cultural Street)</h4>
+                        <p><a href="https://baike.baidu.com/item/天津古文化街" target="_blank"></a>古文化街是天津最著名的文化地标之一，被誉为津门故里的缩影。这里不仅有古色古香的建筑，更汇集了众多天津的非物质文化遗产。您可以在这里欣赏到杨柳青年画的细腻与喜庆，感受“泥人张”彩塑的栩栩如生，还能聆听天津快板、相声等传统曲艺的妙趣横生。漫步在青石板路上，仿佛穿越回了旧时的天津卫，是体验天津民俗风情的最佳起点。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>2. 估衣街 (Gucci Street)</h4>
+                        <p><a href="https://baike.baidu.com/item/估衣街" target="_blank">估衣街是天津一条拥有600多年历史的古老商业街，曾是华北地区最大的“估衣”（旧衣）集散地，如今依然保留着浓厚的商业气息和历史韵味。街道两旁林立着老字号店铺，如谦祥益、瑞蚨祥等，您可以在这里感受到老天津的市井生活和商贸文化。这里的建筑风格中西合璧，既有传统的砖木结构，也有近代的洋楼风格，是了解天津城市发展史的活化石。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>3. 泥人张美术馆 (Nirenzhang Art Museum)</h4>
+                        <p><a href="https://baike.baidu.com/item/泥人张" target="_blank">泥人张是天津乃至中国最具代表性的民间彩塑艺术，创始于清代道光年间，至今已传承近两百年。“泥人张”彩塑以其造型生动、色彩艳丽、神态逼真而闻名于世。泥人张美术馆收藏并展示了大量泥人张传人的经典作品，从神话传说、历史故事到市井人物，件件都是栩栩如生的艺术珍品。在这里，您不仅可以欣赏到大师级的艺术创作，还可以近距离观看艺人的现场制作，感受这门指尖上的非遗艺术的独特魅力。</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 路线二：北京中轴线申遗主题路线——“古都之脊”线 -->
+        <div class="route-card" data-routes="北京 永定门 天坛公园 故宫博物院">
+            <div class="route-header">
+                <h2>路线二：北京中轴线申遗主题路线——“古都之脊”线</h2>
+                <p>沿着北京中轴线，感受中国古代都城规划的宏伟与深邃</p>
+            </div>
+            <div class="route-content">
+                <div class="route-images">
+                    <div class="route-image">
+                        <img src="../test/img/wisdom4.jpg" alt="永定门">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom5.jpg" alt="天坛公园">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom6.jpg" alt="故宫博物院">
+                    </div>
+                </div>
+                <div class="route-description">
+                    <p>这条路线将沿着北京中轴线，从南到北，感受中国古代都城规划的宏伟与深邃。</p>
+                </div>
+                <div class="attractions">
+                    <h3>推荐景点</h3>
+                    <div class="attraction-item">
+                        <h4>1. 永定门 (Yongding Gate)</h4>
+                        <p><a href="https://baike.baidu.com/item/永定门" target="_blank">永定门是明清北京外城的南门，也是北京中轴线的南起点。它始建于明代，是北京城经典的城楼建筑之一。登临永定门城楼，可以俯瞰南城风光，远眺中轴线的延伸。这里是感受北京城“天人合一”规划理念的绝佳地点，也是了解北京城历史变迁的开端。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>2. 天坛公园 (Temple of Heaven Park)</h4>
+                        <p><a href="https://baike.baidu.com/item/天坛公园" target="_blank">天坛是明清两代皇帝祭天祈谷的场所，是中国现存最大的古代祭祀性建筑群。其建筑布局严谨，象征“天圆地方”，祈年殿、圜丘坛等建筑更是巧夺天工。漫步在古柏林间，您能深刻体会到中国古代“敬天法祖”的礼制思想和对自然的敬畏之心。天坛不仅是建筑艺术的瑰宝，更是中华传统文化中“天人合一”哲学思想的集中体现。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>3. 故宫博物院 (The Palace Museum)</h4>
+                        <p><a href="https://baike.baidu.com/item/故宫博物院" target="_blank">故宫，旧称紫禁城，是明清两代的皇家宫殿，也是世界上现存规模最大、保存最完整的木质结构古建筑群。它位于北京中轴线的中心，是古代中国皇权的象征。故宫内珍藏着海量的文物和艺术品，每一块砖瓦、每一处宫殿都诉说着数百年的历史故事。参观故宫，就是一次穿越时空的旅程，让您亲身感受中华文明的博大精深和皇家文化的辉煌灿烂。</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 路线三：河北正定古城文化体验路线——“古建瑰宝”线 -->
+        <div class="route-card" data-routes="河北 正定 隆兴寺 开元寺 古城墙">
+            <div class="route-header">
+                <h2>路线三：河北正定古城文化体验路线——“古建瑰宝”线</h2>
+                <p>走进河北省正定县，探寻千年古城的古建艺术和佛教文化</p>
+            </div>
+            <div class="route-content">
+                <div class="route-images">
+                    <div class="route-image">
+                        <img src="../test/img/wisdom7.jpg" alt="隆兴寺">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom8.jpg" alt="开元寺须弥塔">
+                    </div>
+                    <div class="route-image">
+                        <img src="../test/img/wisdom9.jpg" alt="正定古城墙">
+                    </div>
+                </div>
+                <div class="route-description">
+                    <p>这条路线将带您走进河北省正定县，探寻千年古城的古建艺术和佛教文化。</p>
+                </div>
+                <div class="attractions">
+                    <h3>推荐景点</h3>
+                    <div class="attraction-item">
+                        <h4>1. 隆兴寺 (Longxing Temple)</h4>
+                        <p><a href="https://baike.baidu.com/item/隆兴寺" target="_blank">隆兴寺是中国国内现存时代较早、规模较大且保存完整的佛教寺院之一，被梁思成先生誉为“京外名刹之首”。寺内建筑错落有致，布局严谨。最著名的当属大悲阁内的千手千眼观音菩萨铜像，高21.3米，是世界上古代铜铸佛像中最高大、最古老的千手千眼观音像。此外，摩尼殿独特的“十”字形平面布局和倒坐观音像，都极具艺术价值和历史意义。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>2. 开元寺须弥塔 (Xumi Pagoda of Kaiyuan Temple)</h4>
+                        <p><a href="https://baike.baidu.com/item/开元寺须弥塔" target="_blank">正定古城有“九楼四塔八大寺”之称，开元寺须弥塔是其中的代表。它始建于唐代，是典型的密檐式砖塔，造型古朴庄重，与西安小雁塔风格相似，有“正定小雁塔”之称。须弥塔与开元寺钟楼左右对峙，这种“塔楼并立”的布局在中国古建中极为罕见，是研究唐代佛教建筑的重要实物例证。</a></p>
+                    </div>
+                    <div class="attraction-item">
+                        <h4>3. 正定古城墙 (Zhengding Ancient City Wall)</h4>
+                        <p><a href="https://baike.baidu.com/item/正定古城墙" target="_blank">正定古城墙始建于东晋时期，现存的城墙主要为明代遗存。城墙高大坚固，城楼雄伟，是正定古城历史风貌的重要组成部分。登上古城墙，您可以漫步在古老的城砖上，俯瞰古城内外的景色，感受“古郡正定”的沧桑变迁。尤其是在夜晚，灯光映照下的古城墙更显雄浑壮丽，是体验古城夜色和历史氛围的绝佳去处。</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 搜索功能
+        function searchRoutes() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const routeCards = document.querySelectorAll('.route-card');
+            
+            // 先隐藏所有路线
+            routeCards.forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            // 如果搜索框为空，不显示任何路线
+            if (!searchInput) {
+                return;
+            }
+            
+            // 过滤路线，只显示匹配的路线
+            routeCards.forEach(card => {
+                const routes = card.getAttribute('data-routes').toLowerCase();
+                if (routes.includes(searchInput)) {
+                    card.style.display = 'block';
+                }
+            });
+        }
+        
+        // 支持回车键搜索
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchRoutes();
+            }
+        });
+    </script>
+    
+    <footer>
+        <p>&copy; 2026 探寻千年文脉，品味津沽风情</p>
+    </footer>
+</body>
+</html>

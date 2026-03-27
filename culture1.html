@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>民间文学 - 天津国家级非物质文化遗产</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #EEE6CB;
+            font-family: 'Noto Serif SC', 'Microsoft Yahei', serif;
+            color: #333;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZWU2Y2IiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+Cjwvc3ZnPg==');
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #B73F42;
+            border-right: 6px solid #B73F42;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #DE9960;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #DE9960;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #B73F42;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.8;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+
+
+        .content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #B73F42, #DE9960, #B73F42);
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #B73F42, #DE9960, #B73F42);
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #B73F42;
+            border-left: 6px solid #B73F42;
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #DE9960;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .content ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            list-style-type: square;
+            color: #666;
+        }
+
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background-color: #f8f5e6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .image-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .image-item {
+            height: 300px;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 14px 36px;
+            background-color: #B73F42;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(183, 63, 66, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background-color: #9d3538;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(183, 63, 66, 0.4);
+        }
+
+        .heritage-info {
+            background-color: #EEE6CB;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 6px solid #DE9960;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heritage-info h4 {
+            color: #B73F42;
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .heritage-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-indent: 0;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .decorative-element img {
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content h2 {
+                font-size: 26px;
+            }
+
+            .content h3 {
+                font-size: 20px;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                margin: 5px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>民间文学</h1>
+            <p>天津国家级非物质文化遗产</p>
+        </div>
+
+
+
+        <div class="content">
+            <h2>核心项目：杨家将传说</h2>
+            
+            <div class="heritage-info">
+                <h4>项目信息</h4>
+                <p><strong>批次：</strong>2014年第四批（扩展项目）</p>
+                <p><strong>编号：</strong>Ⅰ-34</p>
+                <p><strong>申报地区：</strong>宁河区</p>
+                <p><strong>类别：</strong>民间文学</p>
+            </div>
+
+            <h3>项目简介</h3>
+            <p>杨家将传说是中国历史上著名的民间传说之一，以北宋名将杨业及其子孙的抗辽故事为核心，经过千百年的传承和发展，形成了一套完整的传说体系。在天津宁河一带，杨家将传说尤为盛行，特别是关于杨七郎的传说更是深入人心。</p>
+            <p>杨家将传说不仅是天津民间文学的重要组成部分，也是中国民间文学宝库中的瑰宝。它以生动的故事情节、鲜明的人物形象和深厚的文化内涵，深受广大人民群众的喜爱。</p>
+
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="img/folk story(1).jpeg" alt="杨家将传说场景">
+                    <div class="image-caption">杨家将传说场景</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/folk story(2).jpeg" alt="杨七郎墓">
+                    <div class="image-caption">杨七郎墓</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/folk story(3).jpeg" alt="杨家将文化活动">
+                    <div class="image-caption">杨家将文化活动</div>
+                </div>
+            </div>
+
+            <div class="decorative-element">
+                <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 10H150" stroke="#B73F42" stroke-width="2" stroke-dasharray="5,5"/>
+                        <circle cx="75" cy="10" r="5" fill="#B73F42"/>
+                    </svg>
+            </div>
+
+            <h3>历史背景</h3>
+            <p>杨家将传说起源于北宋时期，经过宋、元、明、清等朝代的不断丰富和发展，逐渐形成了今天我们所熟知的版本。在天津宁河地区，由于杨七郎墓的存在，使得杨家将传说在这里有着更为深厚的群众基础和文化底蕴。</p>
+            <p>据史料记载，杨业是北宋时期的著名将领，曾多次率军抗击辽军，为保卫边疆做出了重要贡献。杨业死后，他的事迹被后人传颂，并逐渐演变成了丰富多彩的民间传说。</p>
+
+            <h3>核心内容</h3>
+            <p>杨家将传说的核心内容包括杨业归宋、血战金沙滩、杨七郎被害、佘太君挂帅、穆桂英挂帅等经典故事。在天津宁河一带，传说杨七郎被害后，其头颅被抛入海中，漂至宁河一带被渔民发现，当地百姓为其修建了杨七郎墓，并形成了一系列相关的民间习俗和信仰活动。</p>
+            <p>这些传说故事不仅展现了杨家将的英勇事迹，也反映了中国传统文化中的忠、孝、节、义等价值观。它们通过口耳相传的方式，在民间广泛流传，成为了中国民间文化的重要组成部分。</p>
+
+            <h3>文化意义</h3>
+            <p>杨家将传说不仅是天津民间文学的重要组成部分，更是中华民族忠勇爱国精神的象征。通过这些传说，人们传承着对英雄的敬仰和对家国情怀的珍视。杨家将传说所体现的忠、孝、节、义等传统价值观，对于今天的社会仍然具有重要的教育意义。</p>
+            <p>此外，杨家将传说也为研究中国民间文学、历史文化和社会风俗提供了宝贵的资料。它是连接过去与现在的桥梁，让我们能够更好地了解和传承中华民族的优秀传统文化。</p>
+
+            <h3>传承现状</h3>
+            <p>近年来，天津市和宁河区政府高度重视杨家将传说的保护和传承工作，通过举办文化节、编纂传说集、建设文化园区等方式，使这一宝贵的非物质文化遗产得到了有效的保护和弘扬。同时，杨家将传说也成为了天津文化旅游的重要资源，吸引了众多游客前来参观和了解。</p>
+            <p>为了进一步保护和传承杨家将传说，当地政府还组织了专门的传承队伍，通过讲座、展览、表演等多种形式，向广大群众特别是青少年普及杨家将传说的相关知识，使这一传统民间文学能够在新时代焕发出新的活力。</p>
+
+            <a href="culture.html" class="btn-back">返回文化展示</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 天津国家级非物质文化遗产保护中心 | 版权所有</p>
+        </div>
+    </div>
+
+
+</body>
+</html>

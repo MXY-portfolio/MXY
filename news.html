@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资讯 - 探寻千年文脉，品味津沽风情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #e2d492;
+        }
+        
+        header {
+            background: transparent;
+            color: #e2d492;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav {
+            background: #91ab89;
+            height: 70px;
+            box-shadow: 0 1px 2px #3ea893;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            color: #e2d492;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            line-height: 70px;
+        }
+        
+        nav ul li a:hover {
+            background: #a6894b;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 200px;
+            }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e2d492;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e2d492;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #A7522F;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #A7522F;
+        }
+        
+        .news-card {
+            background: #F8F0DD;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .academic-card {
+            background: rgba(145, 171, 137, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        
+        .academic-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(144, 168, 156, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .academic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(144, 168, 156, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .news-card:hover::before {
+            left: 100%;
+        }
+        
+        .academic-card:hover::before {
+            left: 100%;
+        }
+        
+        .news-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #A7522F;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .academic-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #A7522F;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .news-card:hover h3 {
+            font-size: 1.3rem;
+            color: #90A89C;
+        }
+        
+        .academic-card:hover h3 {
+            font-size: 1.3rem;
+            color: #e2d492;
+        }
+        
+        .news-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .academic-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .news-card:hover p {
+            color: #333;
+        }
+        
+        .academic-card:hover p {
+            color: #e2d492;
+        }
+        
+        .news-date {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 1rem;
+        }
+        
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+        
+        .industry-section {
+            margin-bottom: 3rem;
+        }
+        
+        .protection-section {
+            margin-top: 3rem;
+            background: #F8F0DD;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .protection-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .protection-card {
+            flex: 1;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            min-height: 400px;
+        }
+        
+        .protection-card:nth-child(1) {
+            background: #F8F0DD;
+        }
+        
+        .protection-card:nth-child(2) {
+            background: #F0E6D2;
+        }
+        
+        .protection-card:nth-child(3) {
+            background: #F5E8D3;
+        }
+        
+        .protection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .protection-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #A7522F;
+        }
+        
+        .protection-card h4 {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #3ea892;
+        }
+        
+        .protection-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .protection-card ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .protection-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: #90A89C;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" style="background: url('img/index9.png'); background-size: cover; background-position: top center; background-repeat: no-repeat; padding: 4rem 0 0 0; min-height: 450px; display: flex; flex-direction: column; width: 100%; max-width: none;">
+            <nav style="margin-top: auto;">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="wisdom.html">智慧文旅</a></li>
+                    <li><a href="museum.html">云游非遗博物馆</a></li>
+                    <li><a href="culture.html">文化展示</a></li>
+                    <li><a href="skills.html">文化技艺</a></li>
+                    <li><a href="news.html">资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <h2 class="section-title">行业风向标与政策解读</h2>
+        
+        <div class="policy-section" style="background: url('img/news10.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 10px; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; "></div>
+            <div style="position: relative; z-index: 2;">
+                <h3 class="section-subtitle">政策法规</h3>
+                
+                <div class="news-card" onclick="togglePolicyDetails(this)">
+                    <h3><a href="https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf7172805e1&title=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E9%9D%9E%E7%89%A9%E8%B4%A8%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E6%B3%95" target="_blank" style="color: #a63f26; text-decoration: none;">中华人民共和国非物质文化遗产法</a></h3>
+                    <p>《中华人民共和国非物质文化遗产法》是为了继承和弘扬中华民族优秀传统文化，促进社会主义精神文明建设，加强非物质文化遗产保护、保存工作而制定的法律。该法于2011年2月25日通过，自2011年6月1日起施行。</p>
+                    <p style="margin-top: 1rem; color: #3ea893; cursor: pointer;">点击查看详细内容 ▼</p>
+                    
+                    <div class="policy-details" style="display: none; margin-top: 1.5rem;">
+                        <p>法律规定了非物质文化遗产的定义、保护范围、调查、代表性项目名录、传承与传播、法律责任等内容，为非物质文化遗产的保护和传承提供了法律保障。</p>
+                        <p style="margin-top: 1rem;">点击标题可跳转至国家法律法规数据库查看完整法律文本。</p>
+                    </div>
+                    <div class="news-date">2011年6月1日</div>
+                </div>
+                
+                <div class="news-card" onclick="togglePolicyDetails(this)">
+                    <h3 style="color: #a63f26; text-decoration: none; cursor: pointer;">京津冀地方法规</h3>
+                    <p>北京、天津、河北省非遗保护条例：国家法律的区域实施细则；结合三地文化特色（北京皇家文化、天津码头民俗曲艺、河北传统手工艺），构建区域性整体保护制度框架，为跨区域非遗资源流动、合作提供法规支撑。</p>
+                    <p style="margin-top: 1rem; color: #3ea893; cursor: pointer;">点击查看详细政策解读 ▼</p>
+                    
+                    <div class="policy-details" style="display: none; margin-top: 1.5rem;">
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; color: #A7522F;">1. 京津冀协同非遗保护政策</h4>
+                        <p><strong>核心逻辑：</strong>以"一体化、资源共享"为核心，推进三地非遗协同发展。</p>
+                        <p><strong>关键方向：</strong>名录共建、传承人互认、跨区域展演（如非遗联展、非遗大集）；对接长城、大运河国家文化公园建设，推动线性文化遗产保护与文旅融合；实现三地资源互享、客源互送、品牌共塑，打造北方非遗集群效应。</p>
+                        
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; color: #A7522F;">2. 天津非遗传承人扶持政策</h4>
+                        <p><strong>资金扶持：</strong>落实国家级、市级传承人年度补助（含国家级优秀等次额外补助）；支持传习活动、技艺记录、抢救性保护等专项经费申领。</p>
+                        <p><strong>人才与平台：</strong>依托高校推进非遗研培计划，提升传承人群技能；依托77家市级非遗传承体验基地，推动"非遗+文旅"融合；支持"走进非遗·品味天津"等品牌活动，助力老字号与非遗项目创新拓市。</p>
+                    </div>
+                    <div class="news-date">2026年3月12日</div>
+                </div>
+                
+                <script>
+                    function togglePolicyDetails(card) {
+                        const details = card.querySelector('.policy-details');
+                        const toggleText = card.querySelector('p:last-of-type:not(.news-date)');
+                        if (details.style.display === 'none') {
+                            details.style.display = 'block';
+                            toggleText.textContent = '点击收起详细政策解读 ▲';
+                        } else {
+                            details.style.display = 'none';
+                            toggleText.textContent = '点击查看详细政策解读 ▼';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        
+        <div class="academic-section" style="background: url('img/news2.jpg'); height: 700px; background-size: cover; background-position: center; padding: 1.5rem; margin: 1.5rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h3 class="section-subtitle">学术前沿</h3>
+            
+            <div style="display: flex; gap: 2rem; margin-top: 1.5rem;">
+                <!-- 学术论文模块 -->
+                <div class="academic-subsection" style="flex: 1; min-height: 800px; display: flex; flex-direction: column;">
+                    <h4 style="margin-bottom: 1rem; color: #A7522F; text-align: center;">学术论文</h4>
+                    
+                    <div class="academic-card" onclick="togglePaperDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="paper">
+                        <h3 style="cursor: pointer;">1. 《文旅融合视域下天津非物质文化遗产可持续发展路径创新研究》</h3>
+                        
+                        <div class="paper-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>作者：</strong>安晟辰、钟蕾</p>
+                            <p><strong>发表：</strong>《艺术家》2025年第12期</p>
+                            <p><strong>核心：</strong>聚焦天津非遗与旅游深度融合，提出以16区非遗项目清单为抓手的高质量发展路径，为天津文旅融合提供理论支撑。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="togglePaperDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="paper">
+                        <h3 style="cursor: pointer;">2. 《新质生产力赋能非遗发展的内在逻辑、现实困境与实践进路》</h3>
+                        
+                        <div class="paper-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>作者：</strong>蒲娇等</p>
+                            <p><strong>发表：</strong>《太原师范学院学报(社会科学版)》2025年第02期</p>
+                            <p><strong>核心：</strong>探讨人工智能、数字技术等新质生产力如何推动天津及京津冀非遗的活态传承与创新转化。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="togglePaperDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="paper">
+                        <h3 style="cursor: pointer;">3. 《从“本体澄明”到“功能解码”非遗工坊基本意涵与功能谱系的阐析》</h3>
+                        
+                        <div class="paper-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>作者：</strong>马知遥团队</p>
+                            <p><strong>发表：</strong>《西南民族大学学报（人文社会科学版）》2025年第7期</p>
+                            <p><strong>核心：</strong>系统解析非遗工坊的运行机制与乡村振兴赋能模式，为京津冀非遗产业化提供参考。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="togglePaperDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="paper">
+                        <h3 style="cursor: pointer;">4. 《京津冀文旅融合视域下非遗传承发展的法治保障》</h3>
+                        
+                        <div class="paper-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>发表：</strong>2025年11月</p>
+                            <p><strong>核心：</strong>提出建立京津冀文旅行业非遗侵权快速响应司法机制，加强区域间知识产权保护协作。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 学术论坛模块 -->
+                <div class="academic-subsection" style="flex: 1; min-height: 800px; display: flex; flex-direction: column;">
+                    <h4 style="margin-bottom: 1rem; color: #A7522F; text-align: center;">学术论坛</h4>
+                    
+                    <div class="academic-card" onclick="toggleForumDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="forum">
+                        <h3 style="cursor: pointer;">1. 第二届"京津冀优秀传统文化传承与高校美育实践路径"学术论坛</h3>
+                        
+                        <div class="forum-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>主办方：</strong>天津工业大学博雅书院</p>
+                            <p><strong>时间：</strong>2026年11月（天津）</p>
+                            <p><strong>核心：</strong>探讨京津冀优秀传统文化如何融入高校美育，搭建跨区域高校学术交流平台。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="toggleForumDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="forum">
+                        <h3 style="cursor: pointer;">2. 第五届京津冀设计学青年学者论坛</h3>
+                        
+                        <div class="forum-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>主办方：</strong>天津美术学院</p>
+                            <p><strong>时间：</strong>2025年12月27日（天津）</p>
+                            <p><strong>核心：</strong>主题为"新艺科背景下文化遗产与当代设计协同创新"，聚焦数字技术在非遗活化中的应用。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="toggleForumDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="forum">
+                        <h3 style="cursor: pointer;">3. 第三届津派文化传承与创新研讨会</h3>
+                        
+                        <div class="forum-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>主办方：</strong>天津社会科学院、津派文化研究中心</p>
+                            <p><strong>时间：</strong>2025年11月（天津）</p>
+                            <p><strong>核心：</strong>深入研讨津派文化（含杨柳青年画、泥人张等）的传承创新与工商文化融合发展。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card" onclick="toggleForumDetails(this)" style="min-height: 120px; margin-bottom: 1rem;" data-card-type="forum">
+                        <h3 style="cursor: pointer;">4. 面向"十五五"京津冀文化协同发展研讨会</h3>
+                        
+                        <div class="forum-details" style="display: none; margin-top: 1.5rem;">
+                            <p><strong>主办方：</strong>北京、天津、河北省社会科学院</p>
+                            <p><strong>时间：</strong>2025年5月（北京）</p>
+                            <p><strong>核心：</strong>从区域协同视角，探讨京津冀文化（含非遗）一体化保护与发展的思路与路径。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 高校与科研机构前沿动态模块 -->
+                <div class="academic-subsection" style="flex: 1; min-height: 800px; display: flex; flex-direction: column;">
+                    <h4 style="margin-bottom: 1rem; color: #A7522F; text-align: center;">高校与科研机构前沿动态</h4>
+                    
+                    <div class="academic-card" style="min-height: 250px; margin-bottom: 1rem;" data-card-type="university">
+                        <h3>1. 天津大学冯骥才文学艺术研究院</h3>
+                        <p>设立全国首个非物质文化遗产学交叉学科硕士点，开展"从书桌到田野"的田野教学，已在杨柳青年画、天津皇会等项目建立田野教学基地，出版《国家非物质文化遗产·皇会志》等学术成果。</p>
+                    </div>
+                    
+                    <div class="academic-card" style="min-height: 250px; margin-bottom: 1rem;" data-card-type="university">
+                        <h3>2. 天津社会科学院</h3>
+                        <p>成立津派文化研究中心，聚焦天津非遗与城市文化、工商文化的关联研究，定期举办津派文化传承与创新研讨会。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                function togglePaperDetails(card) {
+                    const details = card.querySelector('.paper-details');
+                    if (details.style.display === 'none') {
+                        details.style.display = 'block';
+                    } else {
+                        details.style.display = 'none';
+                    }
+                }
+                
+                function toggleForumDetails(card) {
+                    const details = card.querySelector('.forum-details');
+                    if (details.style.display === 'none') {
+                        details.style.display = 'block';
+                    } else {
+                        details.style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+        
+        <!-- 保护成果模块 -->
+        <div class="protection-section">
+            <h3 class="section-subtitle">保护成果</h3>
+            
+            <div style="background: url('img/news3.jpg'); background-size: cover; background-position: center; border-radius: 10px; padding: 2rem; margin-top: 2rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #A7522F; text-align: center;">核心数字化保护项目与技术应用</h3>
+                
+                <div class="protection-grid">
+                <!-- 北京大运河模块 -->
+                <div class="protection-card" style="border-left: 5px solid #3ea892; display: flex; overflow: hidden; background: url('img/news12.jpg'); background-size: cover; background-position: top; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; "></div>
+                    <div style="flex: 1; position: relative; overflow: hidden; clip-path: ellipse(45% 40% at 50% 50%); z-index: 2;">
+                        <div style="width: 100%; height: 100%; background: url('img/news5.jpg'); background-size: cover; background-position: center; position: relative;">
+                        </div>
+                    </div>
+                    <div style="flex: 1; padding: 1.5rem; position: relative; z-index: 2;">
+                        <div style="position: relative; z-index: 2;">
+                            <h3 style="font-size: 1.4rem; color: #3ea892; margin-bottom: 1.5rem;">北京大运河</h3>
+                            <p style="color: white;"><strong>技术应用：</strong>依托时空地理信息系统，实现大运河文化遗产全景可视化展示，联动天坛神乐署中和韶乐、花丝镶嵌等9项非遗，采用“AI数字人+数电同步”模式，实现多维度活化呈现。</p>
+                            <p style="color: white;"><strong>沉浸式体验：</strong>开发皮影戏数字化展演、活字印刷互动体验项目，构建“讲座+体验+对话”的传承模式，计划2026年中在北京城市图书馆举办新品发布活动。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 唐山皮影戏模块 -->
+                <div class="protection-card" style="border-left: 5px solid #A7522F; display: flex; overflow: hidden; background: url('img/news11.jpg'); background-size: cover; background-position:top; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+                    <div style="flex: 1; padding: 1.5rem; position: relative; z-index: 2;">
+                        <h3 style="font-size: 1.4rem; color: #A7522F; margin-bottom: 1.5rem;">唐山皮影戏</h3>
+                        <p style="color: black;"><strong>成果概况：</strong>建成全球首个皮影数字基因库，借助毫米级动作捕捉系统，采集87种传统身段，搭建起含1200万帧数据的动态数据库，动作复刻误差控制在0.5度以内。</p>
+                        <p style="color: black;"><strong>技术突破：</strong>研发碳纤维仿生骨架影人，耐折性能是传统驴皮材料的1700倍，使用寿命超50年；搭载影调AI技术，可将唐山方言实时转译为12种语言，让全球观众都能感受原声唱腔。</p>
+                        <p style="color: black "><strong>创新应用：</strong>打造VR剧场，配备140个手势感应器，观众可操控影人进行互动比武，交互延迟低于0.1秒；运用NFT双链存证技术完成数字藏品确权，《斗战胜佛》系列拍出12万美元，创下非遗类NFT拍卖新高。</p>
+                    </div>
+                    <div style="flex: 1; position: relative; overflow: hidden; clip-path: ellipse(45% 40% at 50% 50%); z-index: 2;">
+                        <div style="width: 100%; height: 100%; background: url('img/news4.jpg'); background-size: cover; background-position: center; position: relative;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 区域协同数字化模块 -->
+                <div class="protection-card" style="border-left: 5px solid #90A89C; display: flex; overflow: hidden; background: url('img/news12.jpg'); width: 100%; height: auto; background-size: cover; background-position: top; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; "></div>
+                    <div style="flex: 1; position: relative; overflow: hidden; clip-path: ellipse(45% 40% at 50% 50%); z-index: 2;">
+                        <div style="width: 100%; height: 100%; background: url('img/news6.jpg'); background-size: cover; background-position: center; position: relative;">
+                        </div>
+                    </div>
+                    <div style="flex: 1; padding: 1.5rem; position: relative; z-index: 2;">
+                        <h3 style="font-size: 1.4rem; color: #90A89C; margin-bottom: 1.5rem;">区域协同数字化</h3>
+                        <p style="color: white;"><strong>资源共享：</strong>京津冀文化产业协同发展天津中心与河北中心携手，运用艺术微喷技术，高精度复制200余平方米的石家庄毗卢寺壁画，完整还原壁画笔触与色彩，并举办跨区域交流展览。</p>
+                        <p style="color: white;"><strong>标准共建：</strong>门头沟区推进“数字非遗知识产权保护项目”，制定非遗数据登记规范，建立数字化保护与知识产权保护联动机制，形成“保护-确权-转化”的完整工作闭环。</p>
+                    </div>
+                </div>
+                
+                <!-- 保护成果与成效模块 -->
+                <div class="protection-results" style="margin-top: 3rem; padding: 2rem; background: url('img/news8.jpg'); background-size: cover; background-position: center; border-radius: 10px; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; "></div>
+                    <div style="position: relative; z-index: 2;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: #A7522F; text-align: center;">保护成果与成效</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <!-- 濒危项目留存 -->
+                            <div style="background: rgba(145, 171, 137, 0.7); padding: 1.5rem; border-radius: 10px;">
+                                <h4 style="font-size: 1.2rem; color: #A7522F; margin-bottom: 1rem;">1. 濒危项目留存</h4>
+                                <p style="color: #333; line-height: 1.6;">完成京津冀三地百余项濒危非遗项目的数字建档工作，覆盖传统戏曲、手工技艺、民俗活动等多个品类，有效避免"人亡艺绝"问题，唐山皮影、石家庄壁画等项目实现数字资产永久留存。</p>
+                            </div>
+                            
+                            <!-- 技术转化应用 -->
+                            <div style="background: rgba(145, 171, 137, 0.7); padding: 1.5rem; border-radius: 10px;">
+                                <h4 style="font-size: 1.2rem; color: #A7522F; margin-bottom: 1rem;">2. 技术转化应用</h4>
+                                <p style="color: #333; line-height: 1.6;">3D扫描、动作捕捉、AI修复等技术全面应用于非遗记录工作，承德避暑山庄等世界文化遗产完成文物数字检测与档案建立，打造13个数字展厅，推出《假如文物会说话》等优质节目。</p>
+                            </div>
+                            
+                            <!-- 文旅融合创新 -->
+                            <div style="background: rgba(145, 171, 137, 0.7); padding: 1.5rem; border-radius: 10px;">
+                                <h4 style="font-size: 1.2rem; color: #A7522F; margin-bottom: 1rem;">3. 文旅融合创新</h4>
+                                <p style="color: #333; line-height: 1.6;">借助VR/AR技术打造沉浸式非遗体验线路，如"红楼非遗夜游"、VR支前民谣体验等；2026年廊坊"五好非遗大集"推出AIGC动画电影《团圆令》，推动非遗与数字科技深度融合发展。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 数据与实践价值模块 -->
+                <div class="protection-card" style="border-left: 5px solid #3ea892; background: url('img/news9.jpg'); background-size: cover; background-position: center; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; "></div>
+                    <div style="position: relative; z-index: 2; padding: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; color: #3ea892; margin-bottom: 1.5rem; text-align: center;">数据与实践价值</h3>
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="font-size: 1.1rem; color: white; margin-bottom: 0.8rem;">数据支撑：</h4>
+                            <p>截至2026年3月，京津冀地区已建成50余个非遗数字资源库，整合数字化档案超20万份，累计实施80余项数字化保护项目，惠及3000余名非遗传承人。</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; color: white; margin-bottom: 0.8rem;">核心意义：</h4>
+                            <p>推动非遗从静态保存转向活态传承，依靠数字技术打破地域限制，为非遗产业化、市场化发展提供技术支持，同时培育一批兼具非遗素养与数字技术能力的复合型人才。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 探寻千年文脉，品味津沽风情</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>传统医药 - 天津国家级非物质文化遗产</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5e6;
+            font-family: 'Noto Serif SC', 'Microsoft Yahei', serif;
+            color: #333;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmY3ZTUiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+Cjwvc3ZnPg==');
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 2px solid #c8102e;
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #c8102e;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.8;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            margin: 0 10px;
+            background-color: #f8f5e6;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .nav-tab:hover {
+            background-color: #c8102e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background-color: #c8102e;
+            color: #fff;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #c8102e;
+            border-left: 6px solid #c8102e;
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .content ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            list-style-type: square;
+            color: #666;
+        }
+
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background-color: #f8f5e6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .image-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 14px 36px;
+            background-color: #c8102e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background-color: #a80d27;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(200, 16, 46, 0.4);
+        }
+
+        .heritage-info {
+            background-color: #f8f5e6;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 6px solid #f39c12;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heritage-info h4 {
+            color: #c8102e;
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .heritage-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-indent: 0;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .decorative-element img {
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content h2 {
+                font-size: 26px;
+            }
+
+            .content h3 {
+                font-size: 20px;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                margin: 5px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>传统医药</h1>
+            <p>天津国家级非物质文化遗产</p>
+        </div>
+
+
+
+        <div class="content">
+            <h2>核心项目：天津益德成闻药制作技艺</h2>
+            
+            <div class="heritage-info">
+                <h4>项目信息</h4>
+                <p><strong>批次：</strong>2011年第三批</p>
+                <p><strong>编号：</strong>Ⅸ-13</p>
+                <p><strong>申报地区：</strong>天津市</p>
+                <p><strong>类别：</strong>传统医药</p>
+            </div>
+
+            <h3>项目简介</h3>
+            <p>益德成闻药制作技艺是天津地区传统的医药制作技艺，以其独特的配方和制作工艺著称，是天津文化的重要组成部分。益德成闻药始于清雍正年间，创始人王吉天以其精湛的医术和独特的配方，成为中国传统医药的代表人物。</p>
+            <p>益德成闻药以其独特的疗效和制作工艺而闻名于世，主要用于治疗鼻疾、头痛、失眠等症状，是中国传统医药的重要组成部分。</p>
+
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="img/medicine (1).jpeg" alt="益德成闻药">
+                    <div class="image-caption">益德成闻药</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (2).png" alt="闻药制作工艺">
+                    <div class="image-caption">闻药制作工艺</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (3).png" alt="闻药传承人">
+                    <div class="image-caption">闻药传承人</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (4).webp" alt="传统医药展示">
+                    <div class="image-caption">传统医药展示</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (5).webp" alt="医药制作工艺">
+                    <div class="image-caption">医药制作工艺</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (6).jpeg" alt="传统医药文化">
+                    <div class="image-caption">传统医药文化</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (7).jpeg" alt="医药传承人">
+                    <div class="image-caption">医药传承人</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (8).jpeg" alt="传统医药展示">
+                    <div class="image-caption">传统医药展示</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/medicine (9).jpeg" alt="医药制作工艺">
+                    <div class="image-caption">医药制作工艺</div>
+                </div>
+            </div>
+
+            <div class="decorative-element">
+                <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 10H150" stroke="#c8102e" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="75" cy="10" r="5" fill="#c8102e"/>
+                </svg>
+            </div>
+
+            <h3>历史背景</h3>
+            <p>益德成闻药起源于清代雍正年间，创始人王吉天（1680-1750）自幼学习医药知识，经过长期的实践和创新，形成了独特的闻药配方和制作工艺。王吉天擅长用中药制作闻药，通过鼻腔吸入达到治疗效果，被誉为"闻药王"。</p>
+            <p>经过数代传承，益德成闻药逐渐发展成为中国传统医药的重要组成部分，其制作技艺和配方被严格保密，成为天津的文化瑰宝。</p>
+
+            <h3>艺术特点</h3>
+            <p>益德成闻药制作技艺的艺术特点主要体现在以下几个方面：一是配方独特，采用多种名贵中药材，经过精心配比；二是制作工艺复杂，需要经过选料、炮制、研磨、混合等多个步骤；三是疗效显著，对鼻疾、头痛、失眠等症状有独特的治疗效果；四是包装精美，传统的包装工艺体现了中国传统医药的文化内涵。</p>
+            <p>益德成闻药的制作工艺需要严格的操作规范和丰富的经验，每一道工序都需要精心操作，确保产品的质量和疗效。</p>
+
+            <h3>文化意义</h3>
+            <p>益德成闻药制作技艺不仅是一种传统医药技艺，更是中华民族优秀传统文化的重要载体。通过闻药制作，人们传承着中国传统的医药智慧和健康理念，展现了中国传统文化的丰富内涵。</p>
+            <p>益德成闻药作为天津的文化名片，不仅丰富了当地的文化生活，也为中国传统医药的传承和发展做出了重要贡献。它是中国非物质文化遗产的重要组成部分，具有重要的历史、文化和医学价值。</p>
+
+            <h3>传承现状</h3>
+            <p>目前，益德成闻药制作技艺已经传承到第八代，代表性传承人包括王玉英、王保祥等。为了保护和传承这一传统技艺，天津市采取了一系列措施，包括建立传承基地、开展技艺培训、举办展览展示等。</p>
+            <p>同时，益德成闻药也在不断创新，结合现代医药技术，开发出符合当代需求的新产品，使这一传统技艺焕发出新的活力。通过这些努力，益德成闻药制作技艺的传承和发展得到了有效保障，为中华民族优秀传统文化的传承做出了重要贡献。</p>
+
+            <a href="culture.html" class="btn-back">返回文化展示</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 天津国家级非物质文化遗产保护中心 | 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 导航标签切换功能
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有标签的active类
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前标签的active类
+                this.classList.add('active');
+                
+                // 这里可以添加内容切换逻辑
+            });
+        });
+    </script>
+</body>
+</html>

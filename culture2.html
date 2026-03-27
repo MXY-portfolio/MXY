@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>传统音乐 - 天津国家级非物质文化遗产</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #EEE6CB;
+            font-family: 'Noto Serif SC', 'Microsoft Yahei', serif;
+            color: #333;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZWU2Y2IiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+Cjwvc3ZnPg==');
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #B73F42;
+            border-right: 6px solid #B73F42;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #DE9960;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #DE9960;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #B73F42;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.8;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            margin: 0 10px;
+            background-color: #f8f5e6;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .nav-tab:hover {
+            background-color: #c8102e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background-color: #c8102e;
+            color: #fff;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #B73F42, #DE9960, #B73F42);
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #B73F42, #DE9960, #B73F42);
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #B73F42;
+            border-left: 6px solid #B73F42;
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #DE9960;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .content ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            list-style-type: square;
+            color: #666;
+        }
+
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background-color: #f8f5e6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .image-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .image-item {
+            height: 300px;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 14px 36px;
+            background-color: #B73F42;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(183, 63, 66, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background-color: #9d3538;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(183, 63, 66, 0.4);
+        }
+
+        .heritage-info {
+            background-color: #EEE6CB;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 6px solid #DE9960;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heritage-info h4 {
+            color: #B73F42;
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .heritage-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-indent: 0;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .decorative-element img {
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content h2 {
+                font-size: 26px;
+            }
+
+            .content h3 {
+                font-size: 20px;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                margin: 5px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>传统音乐</h1>
+            <p>天津国家级非物质文化遗产</p>
+        </div>
+
+
+
+        <div class="content">
+            <h2>核心项目：天津时调</h2>
+            
+            <div class="heritage-info">
+                <h4>项目信息</h4>
+                <p><strong>批次：</strong>2006年第一批</p>
+                <p><strong>编号：</strong>Ⅱ-38</p>
+                <p><strong>申报地区：</strong>天津市</p>
+                <p><strong>类别：</strong>传统音乐</p>
+            </div>
+
+            <h3>项目简介</h3>
+            <p>天津时调是天津地区最具代表性的传统曲艺形式之一，以其独特的旋律和演唱风格闻名，内容多反映天津的市井生活和民俗风情。天津时调的历史可以追溯到清代，经过数百年的发展，已经成为天津民间文化的重要组成部分。</p>
+            <p>天津时调不仅是天津传统音乐的瑰宝，也是中国曲艺艺术的重要代表。它以其独特的艺术魅力，吸引了众多观众的喜爱，成为了天津文化的一张名片。</p>
+
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="img/music 1.webp" alt="天津时调表演">
+                    <div class="image-caption">天津时调表演</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/music 2.jpeg" alt="传统乐器演奏">
+                    <div class="image-caption">传统乐器演奏</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/music 3.jpeg" alt="天津时调传承人">
+                    <div class="image-caption">天津时调传承人</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/music 4.jpeg" alt="传统音乐演出">
+                    <div class="image-caption">传统音乐演出</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/music5.jpeg" alt="音乐表演场景">
+                    <div class="image-caption">音乐表演场景</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/music6.jpeg" alt="传统音乐传承">
+                    <div class="image-caption">传统音乐传承</div>
+                </div>
+            </div>
+
+            <div class="decorative-element">
+                <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 10H150" stroke="#B73F42" stroke-width="2" stroke-dasharray="5,5"/>
+                        <circle cx="75" cy="10" r="5" fill="#B73F42"/>
+                    </svg>
+            </div>
+
+            <h3>历史背景</h3>
+            <p>天津时调起源于清代，最初是天津民间的小调，经过历代艺人的加工和发展，逐渐形成了独特的艺术风格。在民国时期，天津时调得到了进一步的发展，成为天津曲艺的重要组成部分。新中国成立后，天津时调得到了政府的重视和扶持，成为了国家级非物质文化遗产。</p>
+            <p>天津时调的发展历程，反映了天津民间文化的演变和发展，是天津历史文化的重要见证。</p>
+
+            <h3>艺术特点</h3>
+            <p>天津时调的艺术特点主要体现在以下几个方面：一是旋律优美，节奏明快，具有浓郁的天津地方特色；二是演唱风格独特，讲究字正腔圆，韵味十足；三是内容丰富，多反映天津的市井生活和民俗风情，具有浓郁的生活气息；四是伴奏简单，主要以三弦、四胡等传统乐器为主，突出演唱的表现力。</p>
+            <p>天津时调的演唱形式多样，有独唱、对唱、合唱等多种形式，表演时注重与观众的互动，具有强烈的艺术感染力。</p>
+
+            <h3>文化意义</h3>
+            <p>天津时调不仅是天津传统音乐的瑰宝，也是中国曲艺艺术的重要代表。它承载着天津的历史文化记忆，反映了天津人民的生活方式和价值观念。通过天津时调的演唱，人们可以了解天津的历史文化和民俗风情，感受天津人民的智慧和创造力。</p>
+            <p>天津时调所体现的艺术精神和文化内涵，对于今天的文化建设和精神文明建设仍然具有重要的借鉴意义。</p>
+
+            <h3>传承现状</h3>
+            <p>近年来，天津市高度重视天津时调的保护和传承工作，通过举办培训班、组织演出、录制音像资料等方式，使这一宝贵的非物质文化遗产得到了有效的保护和弘扬。同时，天津时调也成为了天津文化旅游的重要资源，吸引了众多游客前来欣赏和了解。</p>
+            <p>为了进一步保护和传承天津时调，天津市还积极推进天津时调进校园、进社区等活动，培养年轻一代对传统音乐的兴趣和热爱，为天津时调的传承和发展注入新的活力。</p>
+
+            <a href="culture.html" class="btn-back">返回文化展示</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 天津国家级非物质文化遗产保护中心 | 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 导航标签切换功能
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有标签的active类
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前标签的active类
+                this.classList.add('active');
+                
+                // 这里可以添加内容切换逻辑
+            });
+        });
+    </script>
+</body>
+</html>

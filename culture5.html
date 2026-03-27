@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>曲艺 - 天津国家级非物质文化遗产</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5e6;
+            font-family: 'Noto Serif SC', 'Microsoft Yahei', serif;
+            color: #333;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmY3ZTUiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+Cjwvc3ZnPg==');
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 2px solid #c8102e;
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #c8102e;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #c8102e;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.8;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            margin: 0 10px;
+            background-color: #f8f5e6;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .nav-tab:hover {
+            background-color: #c8102e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background-color: #c8102e;
+            color: #fff;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #c8102e, #f39c12, #c8102e);
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #c8102e;
+            border-left: 6px solid #c8102e;
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h3 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .content ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            list-style-type: square;
+            color: #666;
+        }
+
+        .image-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background-color: #f8f5e6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .image-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 14px 36px;
+            background-color: #c8102e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background-color: #a80d27;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(200, 16, 46, 0.4);
+        }
+
+        .heritage-info {
+            background-color: #f8f5e6;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 6px solid #f39c12;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heritage-info h4 {
+            color: #c8102e;
+            margin-bottom: 20px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .heritage-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            text-indent: 0;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .decorative-element img {
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .content h2 {
+                font-size: 26px;
+            }
+
+            .content h3 {
+                font-size: 20px;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                margin: 5px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>曲艺</h1>
+            <p>天津国家级非物质文化遗产</p>
+        </div>
+
+
+
+        <div class="content">
+            <h2>核心项目：天津相声</h2>
+            
+            <div class="heritage-info">
+                <h4>项目信息</h4>
+                <p><strong>批次：</strong>2006年第一批</p>
+                <p><strong>编号：</strong>Ⅴ-2</p>
+                <p><strong>申报地区：</strong>天津市</p>
+                <p><strong>类别：</strong>曲艺</p>
+            </div>
+
+            <h3>项目简介</h3>
+            <p>天津相声是中国相声的重要流派之一，以其幽默风趣的语言和精湛的表演技艺著称，是天津文化的重要组成部分。天津相声的历史可以追溯到清代，经过数百年的发展，已经成为中国相声的重要流派。</p>
+            <p>天津相声不仅是一种传统曲艺形式，也是天津地区文化认同的重要符号，体现了天津人民的幽默智慧和文化特色。</p>
+
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="img/quyi (1).jpeg" alt="相声表演">
+                    <div class="image-caption">相声表演</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (2).jpeg" alt="相声演员">
+                    <div class="image-caption">相声演员</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (3).jpeg" alt="相声茶馆">
+                    <div class="image-caption">相声茶馆</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (4).jpeg" alt="曲艺表演">
+                    <div class="image-caption">曲艺表演</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (5).jpeg" alt="相声传承">
+                    <div class="image-caption">相声传承</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (6).jpeg" alt="曲艺演出">
+                    <div class="image-caption">曲艺演出</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (7).jpeg" alt="相声舞台">
+                    <div class="image-caption">相声舞台</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (8).jpeg" alt="曲艺演员">
+                    <div class="image-caption">曲艺演员</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (9).jpeg" alt="相声表演场景">
+                    <div class="image-caption">相声表演场景</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (10).jpeg" alt="曲艺文化">
+                    <div class="image-caption">曲艺文化</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (11).jpeg" alt="相声艺术">
+                    <div class="image-caption">相声艺术</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (12).jpeg" alt="曲艺传承">
+                    <div class="image-caption">曲艺传承</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (13).jpeg" alt="相声表演">
+                    <div class="image-caption">相声表演</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (14).jpeg" alt="曲艺演出">
+                    <div class="image-caption">曲艺演出</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (15).jpeg" alt="相声茶馆">
+                    <div class="image-caption">相声茶馆</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (16).jpeg" alt="曲艺演员">
+                    <div class="image-caption">曲艺演员</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (17).jpeg" alt="相声传承">
+                    <div class="image-caption">相声传承</div>
+                </div>
+                <div class="image-item">
+                    <img src="img/quyi (18).jpeg" alt="曲艺文化">
+                    <div class="image-caption">曲艺文化</div>
+                </div>
+            </div>
+
+            <div class="decorative-element">
+                <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 10H150" stroke="#c8102e" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="75" cy="10" r="5" fill="#c8102e"/>
+                </svg>
+            </div>
+
+            <h3>历史背景</h3>
+            <p>天津相声起源于清代，最初是北京相声的分支，后来经过天津艺人的加工和发展，逐渐形成了独特的艺术风格。在民国时期，天津相声得到了进一步的发展，成为中国相声的重要流派。新中国成立后，天津相声得到了政府的重视和扶持，成为了国家级非物质文化遗产。</p>
+            <p>天津相声的发展历程，反映了天津文化的演变和发展，是天津历史文化的重要见证。</p>
+
+            <h3>艺术特点</h3>
+            <p>天津相声的艺术特点主要体现在以下几个方面：一是语言幽默风趣，天津相声以其独特的语言风格和幽默的表达方式著称；二是表演形式多样，有单口、对口、群口等多种形式；三是内容丰富，天津相声的内容涵盖了社会生活的各个方面，具有浓郁的生活气息；四是人才辈出，天津相声培养了众多优秀的相声演员，如马三立、侯宝林、郭德纲等。</p>
+            <p>天津相声的表演艺术讲究语言技巧和幽默感，通过讽刺、夸张、对比等手法，展现了社会生活的方方面面，具有强烈的艺术感染力。</p>
+
+            <h3>文化意义</h3>
+            <p>天津相声不仅是一种传统曲艺形式，更是中华民族优秀传统文化的重要载体。通过相声表演，人们可以了解中国的社会生活和传统价值观。天津相声所体现的幽默智慧和社会批判精神，对于今天的社会仍然具有重要的教育意义。</p>
+            <p>天津相声也是天津地区重要的文化符号，通过相声表演，增强了社区的凝聚力和文化认同感，促进了社会的和谐发展。</p>
+
+            <h3>传承现状</h3>
+            <p>近年来，天津市高度重视天津相声的保护和传承工作，通过举办培训班、组织演出、录制音像资料等方式，使这一宝贵的非物质文化遗产得到了有效的保护和弘扬。同时，天津相声也成为了天津文化旅游的重要资源，吸引了众多游客前来欣赏和了解。</p>
+            <p>为了进一步保护和传承天津相声，天津市还积极推进天津相声进校园、进社区等活动，培养年轻一代对传统曲艺的兴趣和热爱，为天津相声的传承和发展注入新的活力。</p>
+
+            <a href="culture.html" class="btn-back">返回文化展示</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 天津国家级非物质文化遗产保护中心 | 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 导航标签切换功能
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有标签的active类
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前标签的active类
+                this.classList.add('active');
+                
+                // 这里可以添加内容切换逻辑
+            });
+        });
+    </script>
+</body>
+</html>

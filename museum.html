@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云游非遗博物馆 - 探寻千年文脉，品味津沽风情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #e2d492;
+        }
+        
+        header {
+            background: transparent;
+            color: #e2d492;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav {
+            background: #91ab89;
+            height: 70px;
+            box-shadow: 0 1px 2px #3ea893;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            color: #e2d492;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            line-height: 70px;
+        }
+        
+        nav ul li a:hover {
+            background: #a6894b;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 200px;
+            }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #e2d492;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e2d492;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #A7522F;
+            text-align: center;
+        }
+        
+        .museum-card {
+            background: #F8F0DD;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .museum-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .museum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(144, 168, 156, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .museum-card:hover::before {
+            left: 100%;
+        }
+        
+        .museum-header {
+            background: #90A89C;
+            color: #333;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .museum-card-blue:hover .museum-header {
+            background: #4c769e;
+            color: white;
+        }
+        
+        .museum-card-red:hover .museum-header {
+            background: #A7522F;
+            color: #F8F0DD;
+        }
+        
+
+
+
+        .museum-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .museum-card:hover .museum-header h2 {
+            font-size: 1.9rem;
+        }
+        
+        .museum-content {
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .museum-card:hover .museum-content {
+            padding: 2.2rem;
+        }
+        
+        .museum-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .museum-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .museum-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .museum-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .museum-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .exhibition-details {
+            margin-top: 0;
+        }
+        
+        .exhibition-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #3ea892;
+        }
+        
+        .exhibition-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .exhibition-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .exhibition-item p {
+            color: #666;
+        }
+        
+        footer {
+            background: #90A89C;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .museum-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" style="background: url('img/index9.png'); background-size: cover; background-position: top center; background-repeat: no-repeat; padding: 4rem 0 0 0; min-height: 450px; display: flex; flex-direction: column; width: 100%; max-width: none;">
+            <nav style="margin-top: auto;">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="wisdom.html">智慧文旅</a></li>
+                    <li><a href="museum.html">云游非遗博物馆</a></li>
+                    <li><a href="culture.html">文化展示</a></li>
+                    <li><a href="skills.html">文化技艺</a></li>
+                    <li><a href="news.html">资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <h2 class="section-title">云游非遗博物馆 - 京津冀博物馆联盟数字化展示平台</h2>
+        
+        <!-- 乐享河北模块 -->
+        <div class="museum-card museum-card-red">
+            <div class="museum-header">
+                <h2>乐享河北</h2>
+                <p>非遗会客厅——我们的节日·中秋节</p>
+            </div>
+            <div class="museum-content">
+                <div class="museum-images">
+                    <div class="museum-image">
+                        <img src="img/museum1.jpg" alt="乐享河北活动现场">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum2.jpg" alt="鼓书曲艺展演">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum3.jpg" alt="非遗传承互动">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum4.jpg" alt="手工体验展示">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum5.jpg" alt="唐山皮影戏">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum6.jpg" alt="行唐剪纸">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum7.jpg" alt="高邑刻瓷">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum8.jpg" alt="保定老调教学">
+                    </div>
+                </div>
+                <div class="museum-description">
+                    <p>以乐享河北·非遗会客厅——我们的节日·中秋节为主题，通过鼓书说唱、戏曲教学、手工体验等形式，集中展示河北非遗魅力，在中秋佳节传递家国情怀，推动非遗活态传承。</p>
+                </div>
+                <div class="exhibition-details">
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin: 2rem 0;">
+                        <div class="exhibition-item" style="flex: 1; min-width: 300px;">
+                            <h4>基本信息</h4>
+                            <p>2024年9月14-15日，由河北省文化和旅游厅主办，在河北博物院举办，是“乐享河北 非遗会客厅”系列活动之一。</p>
+                        </div>
+                        <div class="exhibition-item" style="flex: 1; min-width: 300px;">
+                            <h4>活动意义</h4>
+                            <p>弘扬中华优秀传统文化，营造中秋团圆氛围，搭建省级非遗传播平台，推动非遗活态传承。</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; background-image: url('img/culture11.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 8px;">
+                        <!-- 鼓书曲艺展演模块 -->
+                        <div style="flex: 1; min-width: 300px; padding: 1rem 2rem 2rem; border-radius: 8px; height: 500px;">
+                            <div style="margin-bottom: 1rem;">
+                                <img src="img/museum4.jpg" alt="鼓书曲艺展演" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                            </div>
+                            <h4 style="text-align: center; margin-bottom: 1rem; color: #333;">鼓书曲艺展演</h4>
+                            <p style="color: #333;">汇聚梨花大鼓、木板大鼓、西河大鼓、磁县坠子、冀东段派评书等5个国家级/省级曲艺项目，12位传承人演绎传统与现代曲目，尽抒家国情怀。</p>
+                        </div>
+                        <!-- 非遗传承互动模块 -->
+                        <div style="flex: 1; min-width: 300px; padding: 2rem 2rem 1rem; border-radius: 8px; height: 500px; display: flex; flex-direction: column;">
+                            <h4 style="text-align: center; margin-bottom: 1rem; color: #333;">非遗传承互动</h4>
+                            <p style="margin-bottom: 1rem; color: #333;">开展保定老调“跟我学唱戏”示范活动，传承人现场教学，拉近非遗与观众距离。</p>
+                            <div style="margin-top: auto; margin-bottom: 0;">
+                                <img src="img/museum24.jpg" alt="非遗传承互动" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <!-- 手工体验展示模块 -->
+                        <div style="flex: 1; min-width: 300px; padding: 1rem 2rem 2rem; border-radius: 8px; height: 500px;">
+                            <div style="margin-bottom: 1rem;">
+                                <img src="img/museum25.jpg" alt="手工体验展示" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                            </div>
+                            <h4 style="text-align: center; margin-bottom: 1rem; color: #333;">手工体验展示</h4>
+                            <p style="color: #333;">呈现唐山皮影戏、行唐剪纸、高邑刻瓷等非遗技艺，面向青少年开展沉浸式美育体验，指导手工制作。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 天津非遗博物馆模块 -->
+        <div class="museum-card museum-card-blue" style="transition: all 0.3s ease;">
+            <div class="museum-header" style="transition: all 0.3s ease;">
+                <h2>天津非遗博物馆</h2>
+                <p>帆海融光——天津博物馆藏18-19世纪中国纹章瓷特展</p>
+            </div>
+            <div class="museum-content">
+                <div class="museum-images">
+                    <div class="museum-image">
+                        <img src="img/museum9.jpg" alt="天津博物馆外观">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum10.jpg" alt="纹章瓷展览现场">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum11.jpg" alt="纹章瓷展品">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum12.jpg" alt="纹章瓷细节">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum13.jpg" alt="展览布置">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum14.jpg" alt="纹章瓷收藏">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum15.jpg" alt="展览互动区">
+                    </div>
+                    <div class="museum-image">
+                        <img src="img/museum16.jpg" alt="纹章瓷特展">
+                    </div>
+                </div>
+                <div class="museum-description">
+                    <p>帆海融光——天津博物馆藏18-19世纪中国纹章瓷特展，收藏了大量与纹章瓷相关的文物和资料。展览通过多个单元，展示了18-19世纪中国纹章瓷的历史文化和工艺特色，是了解中西文化交融的重要窗口。</p>
+                </div>
+                <div class="exhibition-details">
+                    <div class="exhibition-item" style="background: #f0e6d2; padding: 2rem; border-radius: 8px; margin-top: 0;">
+                        <!-- 四个正方形模块横向排列 -->
+                        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 0 0 1rem; background-image: url('img/museum26.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 8px;">
+                            <div style="flex: 1; min-width: 200px; background-image: url('img/museum31.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <h5 style="font-size: 1.2rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 2rem;">展览主题</h5>
+                                <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">以上海丝绸之路为脉络，展现中西文化交融、中外文明互鉴的历史图景</p>
+                            </div>
+                            <div style="flex: 1; min-width: 200px; background-image: url('img/museum32.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <h5 style="font-size: 1.2rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 2rem;">展品核心</h5>
+                                <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">以135件套天津博物馆藏纹章瓷为主体，聚焦18世纪末至19世纪初的中国外销纹章瓷。</p>
+                            </div>
+                            <div style="flex: 1; min-width: 200px; background-image: url('img/museum33.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <h5 style="font-size: 1.2rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 2rem;">文化价值</h5>
+                                <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">每一件展品都承载着跨越山海的文化记忆，既彰显中国制瓷工艺的精湛水准，也见证古代全球化进程中物质文化的传播与碰撞，生动呈现中西文明对话轨迹。</p>
+                            </div>
+                            <div style="flex: 1; min-width: 200px; background-image: url('img/museum34.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <h5 style="font-size: 1.2rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 2rem;">观展服务</h5>
+                                <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">线下优化配套服务，避免高峰拥挤；同步打造线上云展览，复刻展厅细节，搭配图文解读与语音导览，实现“线上线下同频，文化传播无界”。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 内容单元模块 -->
+                        <div style="margin-top: 1.5rem; margin-bottom: 0.8rem;"></div>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem; background-image: url('img/museum27.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 8px;">
+                            <!-- 瓷路海贸模块 -->
+                            <div style="display: flex; gap: 2rem; align-items: flex-start; padding: 1.5rem; border-radius: 8px; min-height: 200px;">
+                                <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                                    <img src="img/museum28.jpg" alt="瓷路海贸" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h6 style="font-size: 1.1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 1.5rem;">瓷路海贸</h6>
+                                    <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">聚焦纹章瓷的贸易与定制。18至19世纪，欧洲商人远渡重洋，将贵族纹章图纸带到广州，由中国匠人依样绘制在景德镇瓷器上，完成这一跨越万里的“高级定制”。以清乾隆奥奇欧佛家族纹章盘为代表，讲述海上丝路的商贸往来与纹章瓷的生产流程。</p>
+                                </div>
+                            </div>
+                            <!-- 世族佳器模块 -->
+                            <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem; border-radius: 8px; flex-direction: row-reverse; min-height: 200px;">
+                                <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                                    <img src="img/museum29.jpg" alt="世族佳器" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h6 style="font-size: 1.1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 1.5rem; text-align: right;">世族佳器</h6>
+                                    <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">解读纹章背后的欧洲社会密码。纹章象征家族荣耀与身份地位，承载着严格的承袭规则与家族情感。展出清乾隆武德家族纹章盖瓶及罕见的女性定制瓷盘，呈现纹章瓷作为贵族生活重器的社会功能与文化内涵。</p>
+                                </div>
+                            </div>
+                            <!-- 美美与共模块 -->
+                            <div style="display: flex; gap: 2rem; align-items: flex-start; padding: 1.5rem; border-radius: 8px; min-height: 200px;">
+                                <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                                    <img src="img/museum30.jpg" alt="美美与共" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h6 style="font-size: 1.1rem; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); margin-bottom: 1.5rem;">美美与共</h6>
+                                    <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">展现中西审美的交融互鉴。欧洲纹章居中而立，中国吉祥纹样环绕四周，器型亦模仿西方银器造型，东西方艺术在同一件瓷器上和谐共生。通过清雍正沃尔尼家族纹章酱汁杯等展品，呈现中国工匠融汇中西的巧思与纹章瓷的独特美学。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 展览反响模块 -->
+                        <div style="margin-top: 1.5rem; background-image: url('img/museum31.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px;">
+                            <h5 style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">展览反响</h5>
+                            <p style="color: black; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">吸引全国文博爱好者观展，在社交平台收获大量好评，被观众誉为“欧洲高定全球限量款的鼻祖”，是感受中外文明交融魅力的重要窗口。</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- 运育非遗 河合共生模块 -->
+        <div class="museum-card museum-card-red">
+            <div class="museum-header">
+                <h2>运育非遗 河合共生</h2>
+                <p>大运河文化带非遗保护传承展示</p>
+            </div>
+            <div class="museum-content">
+                <div class="museum-description">
+                    <p>运育非遗 河合共生——大运河文化带非遗保护传承展示项目，旨在通过数字化手段，展示大运河文化带的非物质文化遗产，促进京津冀地区的文化交流与合作，推动非遗的活态传承。</p>
+                </div>
+                
+                <!-- 巡展主题和基本信息横向并列 -->
+                <div style="display: flex; gap: 2rem; margin: 2rem 0;">
+                    <div style="flex: 1; background-image: url('img/museum35.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">巡展主题</h4>
+                        <p style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">以运育非遗·河合共生为主题，集中展示大运河沿线非物质文化遗产，展现运河与非遗共生共荣、传承发展的文化脉络。</p>
+                    </div>
+                    <div style="flex: 1; background-image: url('img/museum35.jpg'); background-size: cover; background-position: center; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">基本信息</h4>
+                        <p style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">2025年9月27日，由首都图书馆联合大运河沿线七省市级图书馆主办，首站在雄安图书馆开幕，后续将在沿线七省市巡回展出。</p>
+                    </div>
+                </div>
+                
+                <!-- 内容主线部分 -->
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; background-image: url('img/museum22.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                    <!-- 运河文脉模块 -->
+                    <div style="flex: 1; min-width: 300px; padding: 2rem; text-align: center;">
+                        <div style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem;">
+                            <img src="img/museum19.jpg" alt="运河文脉" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">运河文脉</h4>
+                        <p style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">展现大运河的历史文化脉络，串联南北技艺与人群，让观众感知非遗与运河共生共荣的文化脉络。</p>
+                    </div>
+                    
+                    <!-- 匠心传承模块 -->
+                    <div style="flex: 1; min-width: 300px; padding: 2rem; text-align: center;">
+                        <div style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem;">
+                            <img src="img/museum20.jpg" alt="匠心传承" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">匠心传承</h4>
+                        <p style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">展示织绣、窑瓷、文房、风味饮食等运河滋养的造物技艺，如杭绣、越窑青瓷、宣纸、绍兴黄酒等，呈现传统工艺的精湛水准。</p>
+                    </div>
+                    
+                    <!-- 生活美学模块 -->
+                    <div style="flex: 1; min-width: 300px; padding: 2rem; text-align: center;">
+                        <div style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem;">
+                            <img src="img/museum21.jpg" alt="生活美学" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">生活美学</h4>
+                        <p style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">聚焦民间美术与饮食文化，如年画、泥塑、剪纸，以及杭帮菜、苏帮菜、全聚德烤鸭等，展现非遗在日常生活中的应用与传承。</p>
+                    </div>
+                </div>
+                
+                <!-- 其他信息 -->
+                <div style="margin-top: 2rem; background-image: url('img/museum23.jpg'); background-size: cover; background-position: center; padding: 2rem; border-radius: 8px;">
+                    <div style="display: flex; flex-direction: column; gap: 0;">
+                        <div class="exhibition-item" style="padding: 1.5rem; border-radius: 8px; margin-bottom: 0; line-height: 1.4; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                            <h4 style="margin-bottom: 0.5rem; color: #000; text-align: center;">互动体验</h4>
+                            <p style="margin-bottom: 0; color: #000;">特设沉浸式体验区，通过动态展演、静态展示与互动体验，呈现雄安本地非遗（如安新剪纸、鄚州草编），让观众感受“活态传承”。</p>
+                        </div>
+                        <div style="text-align: center; font-size: 3rem; font-weight: 9999; color: #000; margin: 0;">
+                            ↓
+                        </div>
+                        <div class="exhibition-item" style="padding: 1.5rem; border-radius: 8px; margin: 0; line-height: 1.4; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                            <h4 style="margin-bottom: 0.5rem; color: #000; text-align: center;">文化价值</h4>
+                            <p style="margin-bottom: 0; color: #000;">全方位展现大运河非物质文化遗产的独特魅力，串联南北技艺与人群，让观众感知非遗与运河共生共荣的文化脉络。</p>
+                        </div>
+                        <div style="text-align: center; font-size: 3rem; font-weight: 9999; color: #000; margin: 0;">
+                            ↓
+                        </div>
+                        <div class="exhibition-item" style="padding: 1.5rem; border-radius: 8px; margin-top: 0; line-height: 1.4; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                            <h4 style="margin-bottom: 0.5rem; color: #000; text-align: center;">展览目标</h4>
+                            <p style="margin-bottom: 0; color: #000;">让广大读者在“悦读”中体验非遗活态传承，感受大运河文化带的深厚底蕴，实现文明的跨时空对话。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 探寻千年文脉，品味津沽风情</p>
+    </footer>
+</body>
+</html>
