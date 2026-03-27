@@ -123,7 +123,7 @@
         
         .carousel-item img {
             width: 100%;
-            height: 400px;
+            height: 500px;
             object-fit: cover;
         }
         
@@ -405,7 +405,7 @@
     <section class="culture-section" id="culture-section" style="background: url('img/index7.jpg') 30% 20%/cover no-repeat; padding: 4rem 2rem; margin: 2rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
         <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center;">
             <h2 style="margin: 0 -1.5rem 0 0; color: #e2d492; font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); padding: 0.8rem; writing-mode: vertical-rl; text-orientation: upright; height: 250px; display: flex; align-items: center; justify-content: center;">文化</h2>
-            <div class="culture-grid" style="position: relative; flex: 1; height: 400px;">
+            <div class="culture-grid" style="position: relative; flex: 1; height: 500px;">
                 <!-- 响应式设计 -->
                 <style>
                     @media (max-width: 768px) {
@@ -475,7 +475,7 @@
    
     
     <!-- 资讯模块 -->
-    <section class="news-section" id="news-section" style="position: relative; margin: 2rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+    <section class="news-section" id="news-section" style="position: relative; margin: 2rem 0; padding: 2rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('img/index10.jpg'); background-size: cover; background-position: bottom center; opacity: 0.5; border-radius: 15px; z-index: 0;"></div>
         <div style="position: relative; z-index: 1; padding: 2rem 2rem;">
 
@@ -628,6 +628,33 @@
                 }
             }
         }
+        
+        // 调整各模块高度，使其与视口高度匹配
+        function adjustModuleHeights() {
+            const windowHeight = window.innerHeight;
+            
+            // 调整轮播图高度
+            const carousel = document.querySelector('.carousel');
+            if (carousel) {
+                carousel.style.minHeight = (windowHeight * 0.6) + 'px';
+            }
+            
+            // 调整文化模块高度
+            const cultureSection = document.getElementById('culture-section');
+            if (cultureSection) {
+                cultureSection.style.minHeight = windowHeight + 'px';
+            }
+            
+            // 调整资讯模块高度
+            const newsSection = document.getElementById('news-section');
+            if (newsSection) {
+                newsSection.style.minHeight = windowHeight + 'px';
+            }
+        }
+        
+        // 初始调整和窗口大小变化时调整
+        window.addEventListener('load', adjustModuleHeights);
+        window.addEventListener('resize', adjustModuleHeights);
         
         // 文化模块动画重置
         function resetCultureAnimation() {
